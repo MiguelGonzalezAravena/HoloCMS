@@ -78,7 +78,7 @@ require_once(dirname(__FILE__) . '/header.php');
       <td width="78%" valign="top" id="rightblock">
         <div>
           <!-- RIGHT CONTENT BLOCK -->
-          <?php if(!empty($msg)){ ?>
+          <?php if(!empty($msg)) { ?>
           <p><strong><?php echo $msg; ?></p></strong>
           <?php } ?>
           <form action="index.php?p=ranktool&do=something" method="post" name="theAdminForm" id="theAdminForm">
@@ -122,12 +122,17 @@ require_once(dirname(__FILE__) . '/header.php');
               </tr>
               <?php
                 while($row = mysqli_fetch_assoc($get_vouchers)) {
-                  printf("<tr>
-                  <td class='tablerow1' align='center'>%s (ID: %s)</td>
-                  <td class='tablerow2' align='center'>%s</td>
-                  </tr>", $row['name'], $row['id'], $row['rank']);
-                }
               ?>
+              <tr>
+                <td class="tablerow1" align="center">
+                  <?php echo $row['name']; ?> (ID:
+                    <?php echo $row['id']; ?>
+                </td>
+                <td class="tablerow2" align="center">
+                  <?php echo $row['rank']; ?>
+                </td>
+              </tr>
+              <?php } ?>
             </table>
           </div>
         </div>
@@ -140,8 +145,8 @@ require_once(dirname(__FILE__) . '/header.php');
 <div align="center">
   <br />
   <?php
-    $mtime = explode(' ', microtime());
-    $totaltime = $mtime[0] + $mtime[1] - $starttime;
-    printf('Time: %.3f', $totaltime);
-  ?>
+  $mtime = explode(' ', microtime());
+  $totaltime = $mtime[0] + $mtime[1] - $starttime;
+  printf('Time: %.3f', $totaltime);
+?>
 </div>
