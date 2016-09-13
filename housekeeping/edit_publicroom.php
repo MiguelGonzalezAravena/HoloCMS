@@ -2,7 +2,7 @@
 /*==================================+
 || # HoloCMS - Website and Content Management System
 |+==================================+
-|| # Copyright © 2016 Miguel González Aravena. All rights reserved.
+|| # Copyright Â© 2016 Miguel GonzÃ¡lez Aravena. All rights reserved.
 || # https://github.com/MiguelGonzalezAravena/HoloCMS
 |+==================================+
 || # HoloCMS is provided "as is" and comes without
@@ -48,14 +48,14 @@ require_once(dirname(__FILE__) . '/header.php');
         <div>
           <!-- LEFT CONTEXT SENSITIVE MENU -->
           <?php require_once(dirname(__FILE__) . '/usermenu.php'); ?>
-            <!-- / LEFT CONTEXT SENSITIVE MENU -->
+          <!-- / LEFT CONTEXT SENSITIVE MENU -->
         </div>
       </td>
       <td width="78%" valign="top" id="rightblock">
         <div>
           <!-- RIGHT CONTENT BLOCK -->
           <?php
-            if($a == 'delete') {
+            if(!empty($key) && $a == 'delete') {
               mysqli_query($connection, "DELETE FROM rooms WHERE id = '{$key}' LIMIT 1");
               echo '<b>Succesfully deleted!</b><br />';
             }
@@ -67,9 +67,10 @@ require_once(dirname(__FILE__) . '/header.php');
               echo 'Room doesn\'t exist or the room does double exist';
               die;
             }
-            if(!empty($msg)){ ?>
-            <p><strong><?php echo $msg; ?></strong></p>
-            <?php } ?>
+            if(!empty($msg)) { 
+          ?>
+          <p><strong><?php echo $msg; ?></strong></p>
+          <?php } ?>
           <form method="post" name="theAdminForm" id="theAdminForm">
             <div class="tableborder">
               <div class="tableheaderalt">Edit publicroom</div>

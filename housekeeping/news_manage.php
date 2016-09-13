@@ -2,7 +2,7 @@
 /*==================================+
 || # HoloCMS - Website and Content Management System
 |+==================================+
-|| # Copyright © 2016 Miguel González Aravena. All rights reserved.
+|| # Copyright Â© 2016 Miguel GonzÃ¡lez Aravena. All rights reserved.
 || # https://github.com/MiguelGonzalezAravena/HoloCMS
 |+==================================+
 || # HoloCMS is provided "as is" and comes without
@@ -22,7 +22,7 @@ $categories = array('HoloCMS', 'News', 'Furniture', 'Updates', 'Server', 'Credit
 $editor_mode = false;
 $msg = '';
 
-if($do == 'delete') {
+if(!empty($key) && $do == 'delete') {
   $check = mysqli_query($connection, "SELECT num FROM cms_news WHERE num = '{$key}' LIMIT 1") or die(mysqli_error($connection));
   $exists = mysqli_num_rows($check);
 
@@ -32,7 +32,7 @@ if($do == 'delete') {
   } else {
     $msg = 'Unable to delete article; this article does not exist!';
   }
-} elseif($do == 'edit') {
+} elseif(!empty($key) && $do == 'edit') {
   $check = mysqli_query($connection, "SELECT * FROM cms_news WHERE num = '{$key}' LIMIT 1") or die(mysqli_error($connection));
   $exists = mysqli_num_rows($check);
 
@@ -43,7 +43,7 @@ if($do == 'delete') {
     $msg = 'Unable to edit article; this article does not exist!';
   }
 
-} elseif($do == 'save' && !empty($topstory)) {
+} elseif(!empty($key) && $do == 'save' && !empty($topstory)) {
   $check = mysqli_query($connection, "SELECT num FROM cms_news WHERE num = '{$key}' LIMIT 1") or die(mysqli_error($connection));
   $exists = mysqli_num_rows($check);
 
@@ -68,7 +68,7 @@ require_once(dirname(__FILE__) . '/header.php');
         <div>
           <!-- LEFT CONTEXT SENSITIVE MENU -->
           <?php require_once(dirname(__FILE__) . '/sitemenu.php'); ?>
-            <!-- / LEFT CONTEXT SENSITIVE MENU -->
+          <!-- / LEFT CONTEXT SENSITIVE MENU -->
         </div>
       </td>
       <td width="78%" valign="top" id="rightblock">
@@ -99,14 +99,26 @@ require_once(dirname(__FILE__) . '/header.php');
                     echo '<tr align="center"><td colspan="6" class="tablerow1"><strong>No news.</strong></td></tr>';
                   } else {
                     while($row = mysqli_fetch_assoc($get_articles)) {
-                      printf("<tr>
-                      <td class='tablerow1' align='center'>%s</td>
-                      <td class='tablerow2'><strong>%s</strong><div class='desctext'>%s</div></td>
-                      <td class='tablerow2' align='center'>%s</td>
-                      <td class='tablerow2' align='center'>%s</td>
-                      <td class='tablerow2' align='center'><a href='index.php?p=news_manage&do=edit&key=%s'><img src='./images/edit.gif' alt='Edit'></a></td>
-                      <td class='tablerow2' align='center'><a href='index.php?p=news_manage&do=delete&key=%s'><img src='./images/delete.gif' alt='Delete'></a></td>                             
-                      </tr>", $row['num'], HoloText($row['title']), HoloText($row['short_story']), $row['date'], $row['author'], $row['num'], $row['num']);
+                ?>
+                  <tr>
+                    <td class="tablerow1" align="center">
+                      <?php echo $row['num']; ?>
+                    </td>
+                    <td class="tablerow2"><strong><?php echo HoloText($row['title']); ?></strong>
+                      <div class="desctext">
+                        <?php echo HoloText($row['short_story']); ?>
+                      </div>
+                    </td>
+                    <td class="tablerow2" align="center">
+                      <?php echo $row['date']; ?>
+                    </td>
+                    <td class="tablerow2" align="center">
+                      <?php echo  $row['author']; ?>
+                    </td>
+                    <td class="tablerow2" align="center"><a href="index.php?p=news_manage&do=edit&key=<?php echo $row['num']; ?>"><img src="<?php echo $housekeeping; ?>images/edit.gif" alt="Edit"></a></td>
+                    <td class="tablerow2" align="center"><a href="index.php?p=news_manage&do=delete&key=<?php echo $row['num']; ?>"><img src="<?php echo $housekeeping; ?>images/delete.gif" alt="Delete"></a></td>
+                  </tr>
+                <?php
                     }
                   }
                 ?>
@@ -156,9 +168,7 @@ require_once(dirname(__FILE__) . '/header.php');
                       <br />HTML is not allowed here.</div>
                   </td>
                   <td class="tablerow2" width="60%" valign="middle">
-                    <textarea name="short_story" cols="60" rows="5" wrap="soft" id="sub_desc" class="multitext">
-                      <?php echo HoloText($article['short_story']); ?>
-                    </textarea>
+                    <textarea name="short_story" cols="60" rows="5" wrap="soft" id="sub_desc" class="multitext"><?php echo HoloText($article['short_story']); ?></textarea>
                   </td>
                 </tr>
                 <tr>
@@ -167,9 +177,7 @@ require_once(dirname(__FILE__) . '/header.php');
                       <br />HTML is allowed here.</div>
                   </td>
                   <td class="tablerow2" width="60%" valign="middle">
-                    <textarea name="story" cols="60" rows="5" wrap="soft" id="sub_desc" class="multitext">
-                      <?php echo HoloText($article['story']); ?>
-                    </textarea>
+                    <textarea name="story" cols="60" rows="5" wrap="soft" id="sub_desc" class="multitext"><?php echo HoloText($article['story']); ?></textarea>
                   </td>
                 </tr>
                 <tr>

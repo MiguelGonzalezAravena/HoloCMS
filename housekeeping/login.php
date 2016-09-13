@@ -2,13 +2,12 @@
 /*==================================+
 || # HoloCMS - Website and Content Management System
 |+==================================+
-|| # Copyright © 2016 Miguel González Aravena. All rights reserved.
+|| # Copyright Â© 2016 Miguel GonzÃ¡lez Aravena. All rights reserved.
 || # https://github.com/MiguelGonzalezAravena/HoloCMS
 |+==================================+
 || # HoloCMS is provided "as is" and comes without
 || # warrenty of any kind. HoloCMS is free software!
 |+==================================*/
-
 require_once(dirname(__FILE__) . '/../core.php');
 ($hkzone != true ? header('Location: index.php?throwBack=true') : '');
 (isset($_SESSION['acp']) ? header('Location: index.php?loginThrowBack=true') : '');
@@ -53,7 +52,6 @@ if(!empty($form_name) && !empty($form_pass)) {
 
 require_once(dirname(__FILE__) . '/subheader.php');
 ?>
-
   <body style="background-image:url(./images/blank.gif)">
     <div id="loading-layer" style="display:none">
       <div id="loading-layer-shadow">

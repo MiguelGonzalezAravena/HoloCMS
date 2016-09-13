@@ -2,7 +2,7 @@
 /*==================================+
 || # HoloCMS - Website and Content Management System
 |+==================================+
-|| # Copyright © 2016 Miguel González Aravena. All rights reserved.
+|| # Copyright Â© 2016 Miguel GonzÃ¡lez Aravena. All rights reserved.
 || # https://github.com/MiguelGonzalezAravena/HoloCMS
 |+==================================+
 || # HoloCMS is provided "as is" and comes without
@@ -99,7 +99,7 @@ require_once(dirname(__FILE__) . '/header.php');
         <div>
           <!-- LEFT CONTEXT SENSITIVE MENU -->
           <?php require_once(dirname(__FILE__) . '/usermenu.php'); ?>
-            <!-- / LEFT CONTEXT SENSITIVE MENU -->
+          <!-- / LEFT CONTEXT SENSITIVE MENU -->
         </div>
       </td>
       <td width="78%" valign="top" id="rightblock">
@@ -107,7 +107,7 @@ require_once(dirname(__FILE__) . '/header.php');
           <!-- RIGHT CONTENT BLOCK -->
           <?php if(!empty($msg)) { ?>
           <p><strong><?php echo $msg; ?></strong></p>
-            <?php } ?>
+          <?php } ?>
           <table width="100%" cellspacing="0" cellpadding="5" align="center" border="0">
             <form action="index.php?p=massa_stuff&do=jumpCategory" method="post" name="Jumper!" id="Jumper!">
               <div class="tableborder">
@@ -116,10 +116,10 @@ require_once(dirname(__FILE__) . '/header.php');
                   <tr>
                     <td class="tablerow2" width="100%" valign="middle" align="center">
                       <select name="category" class="dropdown">
-                        <option value="1" <?php echo ($catId == 1 ? ' selected="selected"' : ''); ?>>Massa credits</option>
-                        <option value="2" <?php echo ($catId == 2 ? ' selected="selected"' : ''); ?>>Massa badge (period/perm.)</option>
-                        <option value="3" <?php echo ($catId == 3 ? ' selected="selected"' : ''); ?>>Remove badge from a certain user</option>
-                        <option value="4" <?php echo ($catId == 4 ? ' selected="selected"' : ''); ?>>Remove badge from all users with badge code [...]</option>
+                        <option value="1"<?php echo ($catId == 1 ? ' selected="selected"' : ''); ?>>Massa credits</option>
+                        <option value="2"<?php echo ($catId == 2 ? ' selected="selected"' : ''); ?>>Massa badge (period/perm.)</option>
+                        <option value="3"<?php echo ($catId == 3 ? ' selected="selected"' : ''); ?>>Remove badge from a certain user</option>
+                        <option value="4"<?php echo ($catId == 4 ? ' selected="selected"' : ''); ?>>Remove badge from all users with badge code [...]</option>
                       </select>
                       &nbsp;
                       <input type="submit" value="Go" class="realbutton" accesskey="s">
@@ -198,7 +198,7 @@ require_once(dirname(__FILE__) . '/header.php');
                       </select>
                     </td>
                   </tr>
-                <?php } elseif($catId == 3) { ?>
+                  <?php } elseif($catId == 3) { ?>
                   <tr>
                     <td class="tablerow1" width="40%" valign="middle"><strong>User</strong>
                       <div class="graytext">From who do you want to take off a badge?</div>
@@ -215,7 +215,7 @@ require_once(dirname(__FILE__) . '/header.php');
                       <input type="text" name="badgec" value="" size="3" maxlength="3" class="textinput">
                     </td>
                   </tr>
-                <?php } elseif($catId == 4) { ?>
+                  <?php } elseif($catId == 4) { ?>
                   <tr>
                     <td class="tablerow1" width="40%" valign="middle"><strong>Badge code</strong>
                       <div class="graytext">What badge do you want to take off, fill in the badge code.</div>
@@ -224,7 +224,7 @@ require_once(dirname(__FILE__) . '/header.php');
                       <input type="text" name="take" value="" size="3" maxlength="3" class="textinput">
                     </td>
                   </tr>
-                <?php } else { ?>
+                  <?php } else { ?>
                   <tr>
                     <td class="tablerow1" width="40%" valign="middle"><strong>Amount</strong>
                       <div class="graytext">The amount of credits everybody gets.</div>
@@ -233,7 +233,7 @@ require_once(dirname(__FILE__) . '/header.php');
                       <input type="text" name="credits" value="" size="3" maxlength="5" class="textinput">
                     </td>
                   </tr>
-                <?php } ?>
+                  <?php } ?>
                   <tr>
                     <td align="center" class="tablesubheader" colspan="2">
                       <input type="submit" value="Submit" class="realbutton" accesskey="s" name="massa">

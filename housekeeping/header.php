@@ -2,13 +2,12 @@
 /*==================================+
 || # HoloCMS - Website and Content Management System
 |+==================================+
-|| # Copyright © 2016 Miguel González Aravena. All rights reserved.
+|| # Copyright Â© 2016 Miguel GonzÃ¡lez Aravena. All rights reserved.
 || # https://github.com/MiguelGonzalezAravena/HoloCMS
 |+==================================+
 || # HoloCMS is provided "as is" and comes without
 || # warrenty of any kind. HoloCMS is free software!
 |+==================================*/
-
 ($hkzone != true ? header('Location: index.php?throwBack=true') : '');
 
 if($user_rank > 6) {
@@ -60,7 +59,7 @@ $chosen = $lyrics[ mt_rand(0, count($lyrics) - 1) ]; // ..pick a random one.
     <div id="loading-layer" style="display:none">
       <div id="loading-layer-shadow">
         <div id="loading-layer-inner">
-          <img src="./images/loading_anim.gif" style="vertical-align:middle" border="0" alt="Loading..." />
+          <img src="<?php echo $housekeeping; ?>images/loading_anim.gif" style="vertical-align:middle" border="0" alt="Loading..." />
           <br />
           <span style="font-weight:bold" id="loading-layer-text">Loading Data. Please Wait...</span>
         </div>

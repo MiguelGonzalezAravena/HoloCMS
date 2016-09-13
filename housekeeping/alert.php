@@ -2,13 +2,12 @@
 /*==================================+
 || # HoloCMS - Website and Content Management System
 |+==================================+
-|| # Copyright © 2016 Miguel González Aravena. All rights reserved.
+|| # Copyright Â© 2016 Miguel GonzÃ¡lez Aravena. All rights reserved.
 || # https://github.com/MiguelGonzalezAravena/HoloCMS
 |+==================================+
 || # HoloCMS is provided "as is" and comes without
 || # warrenty of any kind. HoloCMS is free software!
 |+==================================*/
-
 require_once(dirname(__FILE__) . '/../core.php');
 ($hkzone != true ? header('Location: index.php?throwBack=true') : '');
 (!isset($_SESSION['acp']) ? header('Location: index.php?p=login') : '');
@@ -94,7 +93,7 @@ require_once(dirname(__FILE__) . '/header.php');
                     <div class="graytext">If you check this, this alert will also be sent to the user on the server as a MOD-alert. If you do, please do not use HTML.</div>
                   </td>
                   <td class="tablerow1" width="60%" valign="middle">
-                    <input type="checkbox" name="musalert" <?php echo ($musalert=='on' ? ' checked="checked"' : ''); ?>> </td>
+                    <input type="checkbox" name="musalert"<?php echo ($musalert == 'on' ? ' checked="checked"' : ''); ?>> </td>
                 </tr>
                 <tr>
                   <td align="center" class="tablesubheader" colspan="2">

@@ -2,7 +2,7 @@
 /*==================================+
 || # HoloCMS - Website and Content Management System
 |+==================================+
-|| # Copyright © 2016 Miguel González Aravena. All rights reserved.
+|| # Copyright Â© 2016 Miguel GonzÃ¡lez Aravena. All rights reserved.
 || # https://github.com/MiguelGonzalezAravena/HoloCMS
 |+==================================+
 || # HoloCMS is provided "as is" and comes without
@@ -45,7 +45,7 @@ require_once(dirname(__FILE__) . '/header.php');
         <div>
           <!-- LEFT CONTEXT SENSITIVE MENU -->
           <?php require_once(dirname(__FILE__) . '/sitemenu.php'); ?>
-            <!-- / LEFT CONTEXT SENSITIVE MENU -->
+          <!-- / LEFT CONTEXT SENSITIVE MENU -->
         </div>
       </td>
       <td width="78%" valign="top" id="rightblock">
@@ -60,58 +60,58 @@ require_once(dirname(__FILE__) . '/header.php');
                 <?php echo ($a == 'add' ? 'Add' : 'Edit'); ?> Recommended</div>
               <table width="100%" cellspacing="0" cellpadding="5" align="center" border="0">
                 <?php if($a == "add") { ?>
-                  <tr>
-                    <td class="tablerow1" width="40%" valign="middle"><b>Type</b>
-                      <div class="graytext">Type either 'group' or 'room' (not yet supported)</div>
-                    </td>
-                    <td class="tablerow2" width="60%" valign="middle">
-                      <input type="text" name="type" value="<?php echo $type; ?>" maxlength="5" class="textinput">
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tablerow1" width="40%" valign="middle"><b>ID</b>
-                      <div class="graytext">The ID of the recommendation.</div>
-                    </td>
-                    <td class="tablerow2" width="60%" valign="middle">
-                      <input type="text" name="rec_id" value="<?php echo $rec_id; ?>" maxlength="175" class="textinput">
-                    </td>
-                  </tr>
-                  <?php
-                    } elseif($a == 'edit') {
-                      if(!empty($key)) {
-                        $sql = mysqli_query($connection, "SELECT * FROM cms_recommended WHERE id = '{$key}' LIMIT 1");
-                        $row = mysqli_fetch_assoc($sql);
-                  ?>
-                    <tr>
-                      <td class="tablerow1" width="40%" valign="middle"><b>Type</b>
-                        <div class="graytext">Type either 'group' or 'room' (not yet supported)</div>
-                      </td>
-                      <td class="tablerow2" width="60%" valign="middle">
-                        <input type="text" name="type" value="<?php echo $row['type']; ?>" maxlength="5" class="textinput">
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="tablerow1" width="40%" valign="middle"><b>ID</b>
-                        <div class="graytext">The ID of the recommendation.</div>
-                      </td>
-                      <td class="tablerow2" width="60%" valign="middle">
-                        <input type='rec_id' name="description" value="<?php echo $row['rec_id']; ?>" maxlength="175" class="textinput">
-                      </td>
-                    </tr>
-                  <?php
-                      }
+                <tr>
+                  <td class="tablerow1" width="40%" valign="middle"><b>Type</b>
+                    <div class="graytext">Type either 'group' or 'room' (not yet supported)</div>
+                  </td>
+                  <td class="tablerow2" width="60%" valign="middle">
+                    <input type="text" name="type" value="<?php echo $type; ?>" maxlength="5" class="textinput">
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tablerow1" width="40%" valign="middle"><b>ID</b>
+                    <div class="graytext">The ID of the recommendation.</div>
+                  </td>
+                  <td class="tablerow2" width="60%" valign="middle">
+                    <input type="text" name="rec_id" value="<?php echo $rec_id; ?>" maxlength="175" class="textinput">
+                  </td>
+                </tr>
+                <?php
+                  } elseif($a == 'edit') {
+                    if(!empty($key)) {
+                      $sql = mysqli_query($connection, "SELECT * FROM cms_recommended WHERE id = '{$key}' LIMIT 1");
+                      $row = mysqli_fetch_assoc($sql);
+                ?>
+                <tr>
+                  <td class="tablerow1" width="40%" valign="middle"><b>Type</b>
+                    <div class="graytext">Type either 'group' or 'room' (not yet supported)</div>
+                  </td>
+                  <td class="tablerow2" width="60%" valign="middle">
+                    <input type="text" name="type" value="<?php echo $row['type']; ?>" maxlength="5" class="textinput">
+                  </td>
+                </tr>
+                <tr>
+                  <td class="tablerow1" width="40%" valign="middle"><b>ID</b>
+                    <div class="graytext">The ID of the recommendation.</div>
+                  </td>
+                  <td class="tablerow2" width="60%" valign="middle">
+                    <input type='rec_id' name="description" value="<?php echo $row['rec_id']; ?>" maxlength="175" class="textinput">
+                  </td>
+                </tr>
+                <?php
                     }
-                    
-                    if(!empty($a) && empty($key)) {
-                      if($a == 'edit') {
-                        echo 'If you want to edit a recommended, please go to the over-view and than click on the edit-icon.';
-                      }
+                  }
+                  
+                  if(!empty($a) && empty($key)) {
+                    if($a == 'edit') {
+                      echo 'If you want to edit a recommended, please go to the over-view and than click on the edit-icon.';
                     }
-                  ?>
-                    <tr>
-                      <td align="center" class="tablesubheader" colspan="2">
-                        <input type="submit" name="<?php echo ($a == 'add' ? 'add' : 'edit'); ?>" value="<?php echo ($a == 'add' ? 'Add recommended' : 'Edit recommended'); ?>" class="realbutton" accesskey="s"></td>
-                    </tr>
+                  }
+                ?>
+                  <tr>
+                    <td align="center" class="tablesubheader" colspan="2">
+                      <input type="submit" name="<?php echo ($a == 'add' ? 'add' : 'edit'); ?>" value="<?php echo ($a == 'add' ? 'Add recommended' : 'Edit recommended'); ?>" class="realbutton" accesskey="s"></td>
+                  </tr>
               </table>
             </div>
           </form>

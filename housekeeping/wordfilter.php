@@ -2,7 +2,7 @@
 /*==================================+
 || # HoloCMS - Website and Content Management System
 |+==================================+
-|| # Copyright © 2016 Miguel González Aravena. All rights reserved.
+|| # Copyright Â© 2016 Miguel GonzÃ¡lez Aravena. All rights reserved.
 || # https://github.com/MiguelGonzalezAravena/HoloCMS
 |+==================================+
 || # HoloCMS is provided "as is" and comes without
@@ -18,11 +18,13 @@ $wordfilter_censor = isset($_POST['wordfilter_censor']) ? FilterText($_POST['wor
 $submit = isset($_POST['submit']) ? FilterText($_POST['submit']) : '';
 $msg = '';
 
-if(!empty($submit)) {
+if(isset($wordfilter_enable)) {
   mysqli_query($connection, "UPDATE system_config SET sval = '{$wordfilter_enable}' WHERE skey = 'wordfilter_enable' LIMIT 1") or die(mysqli_error($connection));
   mysqli_query($connection, "UPDATE system_config SET sval = '{$wordfilter_censor}' WHERE skey = 'wordfilter_censor' LIMIT 1") or die(mysqli_error($connection));
   $msg = 'Settings saved successfully.';
   mysqli_query($connection, "INSERT INTO system_stafflog(action, message, note, userid, targetid, timestamp) VALUES('Housekeeping', 'Updated Server Settings (Wordfilter Options)', 'wordfilter.php', '{$my_id}', '', '{$date_full}')") or die(mysqli_error($connection));
+} else if(!empty($submit)) {
+  $msg = 'Fill in all the fields!';
 }
 
 require_once(dirname(__FILE__) . '/subheader.php');

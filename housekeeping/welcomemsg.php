@@ -2,7 +2,7 @@
 /*==================================+
 || # HoloCMS - Website and Content Management System
 |+==================================+
-|| # Copyright © 2016 Miguel González Aravena. All rights reserved.
+|| # Copyright Â© 2016 Miguel GonzÃ¡lez Aravena. All rights reserved.
 || # https://github.com/MiguelGonzalezAravena/HoloCMS
 |+==================================+
 || # HoloCMS is provided "as is" and comes without
@@ -18,11 +18,13 @@ $welcomemessage_text = isset($_POST['welcomemessage_text']) ? FilterText($_POST[
 $submit = isset($_POST['submit']) ? FilterText($_POST['submit']) : '';
 $msg = '';
 
-if(!empty($submit)) {
+if(isset($welcomemessage_enable)) {
   mysqli_query($connection, "UPDATE system_config SET sval = '{$welcomemessage_enable}' WHERE skey = 'welcomemessage_enable' LIMIT 1") or die(mysqli_error($connection));
   mysqli_query($connection, "UPDATE system_strings SET var_en = '{$welcomemessage_text}' WHERE stringid = 'welcomemessage_text' LIMIT 1") or die(mysqli_error($connection));
   $msg = 'Settings saved successfully.';
   mysqli_query($connection, "INSERT INTO system_stafflog(action, message, note, userid, targetid, timestamp) VALUES('Housekeeping', 'Updated Server Settings (Welcome Message Options)', 'welcomemsg.php', '{$my_id}', '', '{$date_full}')") or die(mysqli_error($connection));
+} else if(!empty($submit)) {
+  $msg = 'Fill in all the fields!';
 }
 
 $check = mysqli_query($connection, "SELECT var_en FROM system_strings WHERE stringid = 'welcomemessage_text' LIMIT 1") or die(mysqli_error($connection));

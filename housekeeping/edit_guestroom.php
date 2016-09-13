@@ -2,7 +2,7 @@
 /*==================================+
 || # HoloCMS - Website and Content Management System
 |+==================================+
-|| # Copyright © 2016 Miguel González Aravena. All rights reserved.
+|| # Copyright Â© 2016 Miguel GonzÃ¡lez Aravena. All rights reserved.
 || # https://github.com/MiguelGonzalezAravena/HoloCMS
 |+==================================+
 || # HoloCMS is provided "as is" and comes without
@@ -13,7 +13,6 @@ require_once(dirname(__FILE__) . '/../core.php');
 (!isset($_SESSION['acp']) ? header('Location: index.php?p=login') : '');
 
 $pagename = 'Edit guestroom';
-$key = isset($_GET['key']) ? (int) $_GET['key'] : 0;
 $a = isset($_GET['a']) ? FilterText($_GET['a']) : '';
 $owner = isset($_POST['owner']) ? FilterText($_POST['owner']): '';
 $password = isset($_POST['password']) ? FilterText($_POST['password']): '';
@@ -27,7 +26,7 @@ $submit = isset($_POST['submit']) ? FilterText($_POST['submit']): '';
 $msg = '';
 
 if(!empty($key)) {
-  if(!empty($owner) && !empty($showname) && !empty($name) && !empty($visitors_max)) {
+  if(!empty($owner) && isset($showname) && !empty($name) && !empty($visitors_max)) {
     mysqli_query($connection, "UPDATE rooms SET owner = '{$owner}', password = '{$password}', showname = '{$showname}', name = '{$name}', description = '{$description}', state = '{$state}', visitors_now = '{$visitors_now}', visitors_max = '{$visitors_max}' WHERE id = '{$key}'") or die(mysqli_error($connection));
   
     $sql = mysqli_query($connection, "SELECT id FROM users WHERE name = '{$owner}'") or die(mysqli_error($connection));
@@ -52,14 +51,14 @@ require_once(dirname(__FILE__) . '/header.php');
         <div>
           <!-- LEFT CONTEXT SENSITIVE MENU -->
           <?php require_once(dirname(__FILE__) . '/usermenu.php'); ?>
-            <!-- / LEFT CONTEXT SENSITIVE MENU -->
+          <!-- / LEFT CONTEXT SENSITIVE MENU -->
         </div>
       </td>
       <td width="78%" valign="top" id="rightblock">
         <div>
           <!-- RIGHT CONTENT BLOCK -->
           <?php
-            if($a == 'delete') {
+            if(!empty($key) && $a == 'delete') {
               mysqli_query($connection, "DELETE FROM rooms WHERE id = '{$key}' LIMIT 1");
               echo '<b>Succesfully deleted!</b><br />';
             }
@@ -73,9 +72,9 @@ require_once(dirname(__FILE__) . '/header.php');
             }
 
             if(!empty($msg)) {
-            ?>
-            <p><strong><?php echo $msg; ?></strong></p>
-            <?php } ?>
+          ?>
+          <p><strong><?php echo $msg; ?></strong></p>
+          <?php } ?>
           <form method="post" name="theAdminForm" id="theAdminForm">
             <div class="tableborder">
               <div class="tableheaderalt">Edit guestroom</div>
@@ -154,11 +153,10 @@ require_once(dirname(__FILE__) . '/header.php');
                   </td>
                 </tr>
                 <tr>
-                  <tr>
-                    <td align="center" class="tablesubheader" colspan="2">
-                      <input type="submit" name="submit" value="Save Options" class="realbutton" accesskey="s">
-                    </td>
-                  </tr>
+                  <td align="center" class="tablesubheader" colspan="2">
+                    <input type="submit" name="submit" value="Save Options" class="realbutton" accesskey="s">
+                  </td>
+                </tr>
               </table>
             </div>
           </form>
@@ -168,13 +166,13 @@ require_once(dirname(__FILE__) . '/header.php');
       </td>
     </tr>
   </table>
-  </div>
-  <!-- / OUTERDIV -->
-  <div align="center">
-    <br />
-    <?php
-      $mtime = explode(' ', microtime());
-      $totaltime = $mtime[0] + $mtime[1] - $starttime;
-      printf('Time: %.3f', $totaltime);
-    ?>
-  </div>
+</div>
+<!-- / OUTERDIV -->
+<div align="center">
+  <br />
+  <?php
+    $mtime = explode(' ', microtime());
+    $totaltime = $mtime[0] + $mtime[1] - $starttime;
+    printf('Time: %.3f', $totaltime);
+  ?>
+</div>

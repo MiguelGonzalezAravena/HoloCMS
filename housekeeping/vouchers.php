@@ -2,7 +2,7 @@
 /*==================================+ 
 || # HoloCMS - Website and Content Management System 
 |+==================================+ 
-|| # Copyright © 2016 Miguel González Aravena. All rights reserved.
+|| # Copyright Â© 2016 Miguel GonzÃ¡lez Aravena. All rights reserved.
 || # https://github.com/MiguelGonzalezAravena/HoloCMS
 |+==================================+ 
 || # HoloCMS is provided "as is" and comes without 
@@ -122,7 +122,7 @@ require_once(dirname(__FILE__) . '/header.php');
       </td>
     </tr>
   </table>
-  </div>
+d</div>
 <!-- / OUTERDIV -->
 <div align="center">
   <br />

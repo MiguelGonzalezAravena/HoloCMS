@@ -2,7 +2,7 @@
 /*==================================+
 || # HoloCMS - Website and Content Management System
 |+==================================+
-|| # Copyright © 2016 Miguel González Aravena. All rights reserved.
+|| # Copyright Â© 2016 Miguel GonzÃ¡lez Aravena. All rights reserved.
 || # https://github.com/MiguelGonzalezAravena/HoloCMS
 |+==================================+
 || # HoloCMS is provided "as is" and comes without
@@ -14,6 +14,7 @@ require_once(dirname(__FILE__) . '/../core.php');
 
 $pagename = 'Database Toolbox - Manual Query';
 $query = isset($_POST['query']) ? FilterText($_POST['query']) : '';
+$msg = '';
 
 if(!empty($query)) {
   $msg = 'Executing query on ' . $sqldb . '...<br />';
@@ -41,8 +42,8 @@ require_once(dirname(__FILE__) . '/header.php');
       <td width="78%" valign="top" id="rightblock">
         <div>
           <!-- RIGHT CONTENT BLOCK -->
-          <?php if(isset($msg)){ ?>
-            <p><strong><?php echo $msg; ?></strong></p>
+          <?php if(!empty($msg)){ ?>
+          <p><strong><?php echo $msg; ?></strong></p>
           <?php } ?>
           <form method="post">
             <b>MySQL Query on <?php echo $sqldb; ?>:</b>
@@ -56,13 +57,13 @@ require_once(dirname(__FILE__) . '/header.php');
       </td>
     </tr>
   </table>
-  </div>
-  <!-- / OUTERDIV -->
-  <div align="center">
-    <br />
-    <?php
-  $mtime = explode(' ', microtime());
-  $totaltime = $mtime[0] + $mtime[1] - $starttime;
-  printf('Time: %.3f', $totaltime);
-?>
-  </div>
+</div>
+<!-- / OUTERDIV -->
+<div align="center">
+  <br />
+  <?php
+    $mtime = explode(' ', microtime());
+    $totaltime = $mtime[0] + $mtime[1] - $starttime;
+    printf('Time: %.3f', $totaltime);
+  ?>
+</div>

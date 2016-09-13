@@ -2,7 +2,7 @@
 /*==================================+
 || # HoloCMS - Website and Content Management System
 |+==================================+
-|| # Copyright © 2016 Miguel González Aravena. All rights reserved.
+|| # Copyright Â© 2016 Miguel GonzÃ¡lez Aravena. All rights reserved.
 || # https://github.com/MiguelGonzalezAravena/HoloCMS
 |+==================================+
 || # HoloCMS is provided "as is" and comes without
@@ -49,7 +49,7 @@ require_once(dirname(__FILE__) . '/header.php');
         <div>
           <!-- LEFT CONTEXT SENSITIVE MENU -->
           <?php require_once(dirname(__FILE__) . '/sitemenu.php'); ?>
-            <!-- / LEFT CONTEXT SENSITIVE MENU -->
+          <!-- / LEFT CONTEXT SENSITIVE MENU -->
         </div>
       </td>
       <td width="78%" valign="top" id="rightblock">
@@ -109,8 +109,8 @@ require_once(dirname(__FILE__) . '/header.php');
                   </td>
                   <td class="tablerow2" width="60%" valign="middle">
                     <select name="widescreen" class="dropdown">
-                      <option value="1" <?php echo (getContent( 'client-widescreen')==1 ? ' selected="selected"' : ''); ?>>Enabled</option>
-                      <option value="0" <?php echo (getContent( 'client-widescreen')==0 ? ' selected="selected"' : ''); ?>>Disabled</option>
+                      <option value="1"<?php echo (getContent('client-widescreen') == 1 ? ' selected="selected"' : ''); ?>>Enabled</option>
+                      <option value="0"<?php echo (getContent('client-widescreen') == 0 ? ' selected="selected"' : ''); ?>>Disabled</option>
                     </select>
                   </td>
                 </tr>
@@ -120,8 +120,8 @@ require_once(dirname(__FILE__) . '/header.php');
                   </td>
                   <td class="tablerow2" width="60%" valign="middle">
                     <select name="loader" class="dropdown">
-                      <option value="1" <?php echo (config( 'loader')==1 ? ' selected="selected"' : ''); ?>>V23 loader</option>
-                      <option value="0" <?php echo (config( 'loader')==0 ? ' selected="selected"' : ''); ?>>Non-V23 loader</option>
+                      <option value="1"<?php echo (config('loader') == 1 ? ' selected="selected"' : ''); ?>>V23 loader</option>
+                      <option value="0"<?php echo (config('loader') == 0 ? ' selected="selected"' : ''); ?>>Non-V23 loader</option>
                     </select>
                   </td>
                 </tr>
@@ -131,8 +131,8 @@ require_once(dirname(__FILE__) . '/header.php');
                   </td>
                   <td class="tablerow2" width="60%" valign="middle">
                     <select name="localhost" class="dropdown">
-                      <option value="1" <?php echo (config( 'localhost')==1 ? ' selected="selected"' : ''); ?>>Yes</option>
-                      <option value="0" <?php echo (config( 'localhost')==0 ? ' selected="selected"' : ''); ?>>No</option>
+                      <option value="1"<?php echo (config('localhost') == 1 ? ' selected="selected"' : ''); ?>>Yes</option>
+                      <option value="0"<?php echo (config('localhost') == 0 ? ' selected="selected"' : ''); ?>>No</option>
                     </select>
                   </td>
                 </tr>

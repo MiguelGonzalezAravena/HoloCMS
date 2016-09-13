@@ -2,7 +2,7 @@
 /*==================================+
 || # HoloCMS - Website and Content Management System
 |+==================================+
-|| # Copyright © 2016 Miguel González Aravena. All rights reserved.
+|| # Copyright Â© 2016 Miguel GonzÃ¡lez Aravena. All rights reserved.
 || # https://github.com/MiguelGonzalezAravena/HoloCMS
 |+==================================+
 || # HoloCMS is provided "as is" and comes without
@@ -26,7 +26,7 @@ require_once(dirname(__FILE__) . '/header.php');
         <div>
           <!-- LEFT CONTEXT SENSITIVE MENU -->
           <?php require_once(dirname(__FILE__) . '/usermenu.php'); ?>
-            <!-- / LEFT CONTEXT SENSITIVE MENU -->
+          <!-- / LEFT CONTEXT SENSITIVE MENU -->
         </div>
       </td>
       <td width="78%" valign="top" id="rightblock">
@@ -54,14 +54,16 @@ require_once(dirname(__FILE__) . '/header.php');
                     if(empty($row['ipaddress_last'])) { 
                       $row['ipaddress_last'] = 'No IP Found';
                     }
-                    printf("<tr>
-                    <td class='tablerow1' align='center'>%s</td>
-                    <td class='tablerow2'><strong>%s</strong><div class='desctext'>%s [<a href='http://who.is/whois-ip/ip-address/%s/' target='_blank'>WHOIS</a>]</div></td>
-                    <td class='tablerow2' align='center'><a href='mailto:%s'>%s</a></td>
-                    <td class='tablerow2' align='center'>%s</td>
-                    <td class='tablerow2' align='center'>%s</td>
-                    <td class='tablerow2' align='center'><a href='index.php?p=edituser&key=%s'><img src='./images/edit.gif' alt='Edit User Data'></a></td>
-                    </tr>", $row['id'], $row['name'], $row['ipaddress_last'], $row['ipaddress_last'], $row['email'], $row['email'], $row['hbirth'], $row['lastvisit'], $row['id']);
+              ?>
+                    <tr>
+                    <td class="tablerow1" align="center"><?php echo $row['id']; ?></td>
+                    <td class="tablerow2"><strong><?php echo $row['name']; ?></strong><div class="desctext"><?php echo $row['ipaddress_last']; ?> [<a href="http://who.is/whois-ip/ip-address/<?php echo $row['ipaddress_last']; ?>/" target="_blank">WHOIS</a>]</div></td>
+                    <td class="tablerow2" align="center"><a href="mailto:<?php echo $row['email']; ?>"><?php echo $row['email']; ?></a></td>
+                    <td class="tablerow2" align="center"><?php echo $row['hbirth']; ?></td>
+                    <td class="tablerow2" align="center"><?php echo $row['lastvisit']; ?></td>
+                    <td class="tablerow2" align="center"><a href="index.php?p=edituser&key=<?php echo $row['id']; ?>"><img src="<?php echo $housekeeping; ?>images/edit.gif" alt="Edit User Data"></a></td>
+                    </tr>
+              <?php
                   }
                 }
               ?>

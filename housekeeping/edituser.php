@@ -2,13 +2,12 @@
 /*==================================+
 || # HoloCMS - Website and Content Management System
 |+==================================+
-|| # Copyright © 2016 Miguel González Aravena. All rights reserved.
+|| # Copyright Â© 2016 Miguel GonzÃ¡lez Aravena. All rights reserved.
 || # https://github.com/MiguelGonzalezAravena/HoloCMS
 |+==================================+
 || # HoloCMS is provided "as is" and comes without
 || # warrenty of any kind. HoloCMS is free software!
 |+==================================*/
-
 require_once(dirname(__FILE__) . '/../core.php');
 ($hkzone != true ? header('Location: index.php?throwBack=true') : '');
 (!isset($_SESSION['acp']) ? header('Location: index.php?p=login') : '');
@@ -73,7 +72,7 @@ require_once(dirname(__FILE__) . '/header.php');
         <div>
           <!-- LEFT CONTEXT SENSITIVE MENU -->
           <?php require_once(dirname(__FILE__) . '/usermenu.php'); ?>
-            <!-- / LEFT CONTEXT SENSITIVE MENU -->
+          <!-- / LEFT CONTEXT SENSITIVE MENU -->
         </div>
       </td>
       <td width="78%" valign="top" id="rightblock">
@@ -98,20 +97,26 @@ require_once(dirname(__FILE__) . '/header.php');
                       } else {
                         $flags = '';
                       }
-
-                      echo '<tr>
-                      <td class="tablerow1"  width="40%"  valign="middle"><b>' . $key . '</b><div class="graytext"></div></td>
-                      <td class="tablerow2"  width="60%"  valign="middle"><input type="text" name="' . $key . '" size="100%" value="' . $value . '" ' . $flags . '></td>
-                      </tr>';
+                ?>
+                <tr>
+                  <td class="tablerow1"  width="40%"  valign="middle">
+                    <b><?php echo $key; ?></b>
+                    <div class="graytext"></div>
+                  </td>
+                  <td class="tablerow2"  width="60%"  valign="middle">
+                    <input type="text" name="<?php echo $key; ?>" size="100%" value="<?php echo $value; ?>" <?php echo $flags; ?>>
+                  </td>
+                </tr>
+                <?php
                     }
                   }
                 ?>
-                  <tr>
-                    <td align="center" class="tablesubheader" colspan="2">
-                      <input type="submit" value="Save User" class="realbutton" accesskey="s">
-                    </td>
-                  </tr>
-                </table>
+                <tr>
+                  <td align="center" class="tablesubheader" colspan="2">
+                    <input type="submit" value="Save User" class="realbutton" accesskey="s">
+                  </td>
+                </tr>
+              </table>
             </div>
           </form>
           <br />

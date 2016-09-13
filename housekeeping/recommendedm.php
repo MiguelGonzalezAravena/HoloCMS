@@ -2,7 +2,7 @@
 /*==================================+
 || # HoloCMS - Website and Content Management System
 |+==================================+
-|| # Copyright © 2016 Miguel González Aravena. All rights reserved.
+|| # Copyright Â© 2016 Miguel GonzÃ¡lez Aravena. All rights reserved.
 || # https://github.com/MiguelGonzalezAravena/HoloCMS
 |+==================================+
 || # HoloCMS is provided "as is" and comes without
@@ -11,21 +11,9 @@
 require_once(dirname(__FILE__) . '/../core.php');
 ($hkzone != true ? header('Location: index.php?throwBack=true') : '');
 (!isset($_SESSION['acp']) ? header('Location: index.php?p=login') : '');
-if(function_exists('SendMUSData') != true){ require_once(dirname(__FILE__) . '/../includes/mus.php'); }
+(!function_exists('SendMUSData') ? require_once(dirname(__FILE__) . '/../includes/mus.php') : '');
 
-if(!isset($_POST['category'])){ // do not try to save when it's a category jump
-
-}
-
-$pagename = "Collectables";
-
-$catId = isset($_POST['category']) ? $_POST['category'] : 0;
-
-if(empty($catId) || !is_numeric($catId) || $catId < 1 || $catId > 5){
-    $catId = 1;
-} else {
-    $catId = $catId;
-}
+$pagename = 'Recommended items';
 
 require_once(dirname(__FILE__) . '/subheader.php');
 require_once(dirname(__FILE__) . '/header.php');
@@ -36,7 +24,7 @@ require_once(dirname(__FILE__) . '/header.php');
         <div>
           <!-- LEFT CONTEXT SENSITIVE MENU -->
           <?php require_once(dirname(__FILE__) . '/sitemenu.php'); ?>
-            <!-- / LEFT CONTEXT SENSITIVE MENU -->
+          <!-- / LEFT CONTEXT SENSITIVE MENU -->
         </div>
       </td>
       <td width="78%" valign="top" id="rightblock">
@@ -63,17 +51,17 @@ require_once(dirname(__FILE__) . '/header.php');
                 <tr>
                   <td class="tablerow1" align="center">
                     <?php echo $row['id']; ?>
-                      </div</td>
-                      <td class="tablerow2">
-                        <?php echo $row['type']; ?>
-                      </td>
-                      <td class="tablerow2">
-                        <?php echo $row['rec_id']; ?>
-                      </td>
-                      <td class="tablerow2" align="center">
-                        <a href="index.php?p=recommendede&key=<?php echo $row['id']; ?>&a=edit"><img src="./images/edit.gif" alt="Edit recommended"></a>
-                        <a href="index.php?p=recommendede&key=<?php echo $row['id']; ?>&a=delete"><img src="./images/delete.gif" alt="Delete recommended"></a>
-                      </td>
+                  </td>
+                  <td class="tablerow2">
+                    <?php echo $row['type']; ?>
+                  </td>
+                  <td class="tablerow2">
+                    <?php echo $row['rec_id']; ?>
+                  </td>
+                  <td class="tablerow2" align="center">
+                    <a href="index.php?p=recommendede&key=<?php echo $row['id']; ?>&a=edit"><img src="./images/edit.gif" alt="Edit recommended"></a>
+                    <a href="index.php?p=recommendede&key=<?php echo $row['id']; ?>&a=delete"><img src="./images/delete.gif" alt="Delete recommended"></a>
+                  </td>
                 </tr>
               <?php
                   }
@@ -83,7 +71,7 @@ require_once(dirname(__FILE__) . '/header.php');
           </div>
         </div>
         <!-- / RIGHT CONTENT BLOCK -->
-        </td>
+      </td>
     </tr>
   </table>
 </div>

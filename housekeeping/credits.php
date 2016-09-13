@@ -28,7 +28,7 @@ require_once(dirname(__FILE__) . '/header.php');
               <div style="font-size:12px;padding:4px; text-align:left">
                 <p>
                   <div align="center">
-                    <img src="./images/holocms-logo.png" border="0" alt="HoloCMS"><br />
+                    <img src="<?php echo $housekeeping; ?>images/holocms-logo.png" border="0" alt="HoloCMS"><br />
                     v<?php echo $holocms['version']; ?> <?php $holocms['stable']; ?><br />
                     Codename '<?php echo $holocms['title']; ?>'<br />
                     <br />
@@ -136,13 +136,13 @@ require_once(dirname(__FILE__) . '/header.php');
       </td>
     </tr>
   </table>
-  </div>
-  <!-- / OUTERDIV -->
-  <div align="center">
-    <br />
-    <?php
-      $mtime = explode(' ', microtime());
-      $totaltime = $mtime[0] + $mtime[1] - $starttime;
-      printf('Time: %.3f', $totaltime);
-    ?>
-  </div>
+</div>
+<!-- / OUTERDIV -->
+<div align="center">
+  <br />
+  <?php
+    $mtime = explode(' ', microtime());
+    $totaltime = $mtime[0] + $mtime[1] - $starttime;
+    printf('Time: %.3f', $totaltime);
+  ?>
+</div>

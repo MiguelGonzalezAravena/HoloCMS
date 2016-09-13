@@ -2,7 +2,7 @@
 /*==================================+
 || # HoloCMS - Website and Content Management System
 |+==================================+
-|| # Copyright © 2016 Miguel González Aravena. All rights reserved.
+|| # Copyright Â© 2016 Miguel GonzÃ¡lez Aravena. All rights reserved.
 || # https://github.com/MiguelGonzalezAravena/HoloCMS
 |+==================================+
 || # HoloCMS is provided "as is" and comes without
@@ -37,7 +37,7 @@ require_once(dirname(__FILE__) . '/header.php');
         <div>
           <!-- LEFT CONTEXT SENSITIVE MENU -->
           <?php require_once(dirname(__FILE__) . '/usermenu.php'); ?>
-            <!-- / LEFT CONTEXT SENSITIVE MENU -->
+          <!-- / LEFT CONTEXT SENSITIVE MENU -->
         </div>
       </td>
       <td width="78%" valign="top" id="rightblock">
@@ -59,11 +59,10 @@ require_once(dirname(__FILE__) . '/header.php');
                   </td>
                 </tr>
                 <tr>
-                  <tr>
-                    <td align="center" class="tablesubheader" colspan="2">
-                      <input type="submit" value="Retrive logs" class="realbutton" accesskey="s">
-                    </td>
-                  </tr>
+                  <td align="center" class="tablesubheader" colspan="2">
+                    <input type="submit" value="Retrive logs" class="realbutton" accesskey="s">
+                  </td>
+                </tr>
               </table>
             </div>
           </form>

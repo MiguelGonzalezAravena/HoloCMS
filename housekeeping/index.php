@@ -2,7 +2,7 @@
 /*==================================+
 || # HoloCMS - Website and Content Management System
 |+==================================+
-|| # Copyright © 2016 Miguel González Aravena. All rights reserved.
+|| # Copyright Â© 2016 Miguel GonzÃ¡lez Aravena. All rights reserved.
 || # https://github.com/MiguelGonzalezAravena/HoloCMS
 |+==================================+
 || # HoloCMS is provided "as is" and comes without
@@ -12,7 +12,6 @@ $is_maintenance = true; // Tell the core to buzz off with it's maintenance
 
 require_once(dirname(__FILE__) . '/../config.php');
 require_once(dirname(__FILE__) . '/../core.php');
-
 
 $hkzone = true;
 $p = (isset($_GET['p']) ? FilterText($_GET['p']) : '');

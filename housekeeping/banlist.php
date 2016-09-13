@@ -2,7 +2,7 @@
 /*==================================+
 || # HoloCMS - Website and Content Management System
 |+==================================+
-|| # Copyright © 2016 Miguel González Aravena. All rights reserved.
+|| # Copyright Â© 2016 Miguel GonzÃ¡lez Aravena. All rights reserved.
 || # https://github.com/MiguelGonzalezAravena/HoloCMS
 |+==================================+
 || # HoloCMS is provided "as is" and comes without
@@ -55,12 +55,22 @@ require_once(dirname(__FILE__) . '/header.php');
                     } else {
                       $username = '<i>Invalid user!</i>';
                     }
-                    printf("<tr>
-                    <td class='tablerow1' align='center'>%s (ID: %s)</td>
-                    <td class='tablerow1' align='center'>%s</td>
-                    <td class='tablerow1' align='center'>%s</td>
-                    <td class='tablerow1' align='center'>%s</td>
-                    </tr>", $username, $row['userid'], $row['descr'], $row['date_expire'], $row['ipaddress']);
+              ?>
+              <tr>
+                <td class="tablerow1" align="center">
+                  <?php echo $username; ?> (ID:
+                    <?php echo $row['userid']; ?>)</td>
+                <td class="tablerow1" align="center">
+                  <?php echo $row['descr']; ?>
+                </td>
+                <td class="tablerow1" align="center">
+                  <?php echo $row['date_expire']; ?>
+                </td>
+                <td class="tablerow1" align="center">
+                  <?php echo $row['ipaddress']; ?>
+                </td>
+              </tr>
+              <?php
                   }
                 }
               ?>
@@ -71,13 +81,13 @@ require_once(dirname(__FILE__) . '/header.php');
       </td>
     </tr>
   </table>
-  </div>
-  <!-- / OUTERDIV -->
-  <div align="center">
-    <br />
-    <?php
-      $mtime = explode(' ', microtime());
-      $totaltime = $mtime[0] + $mtime[1] - $starttime;
-      printf('Time: %.3f', $totaltime);
-    ?>
-  </div>
+</div>
+<!-- / OUTERDIV -->
+<div align="center">
+  <br />
+  <?php
+    $mtime = explode(' ', microtime());
+    $totaltime = $mtime[0] + $mtime[1] - $starttime;
+    printf('Time: %.3f', $totaltime);
+  ?>
+</div>

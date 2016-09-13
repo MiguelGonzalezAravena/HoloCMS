@@ -2,7 +2,7 @@
 /*==================================+
 || # HoloCMS - Website and Content Management System
 |+==================================+
-|| # Copyright © 2016 Miguel González Aravena. All rights reserved.
+|| # Copyright Â© 2016 Miguel GonzÃ¡lez Aravena. All rights reserved.
 || # https://github.com/MiguelGonzalezAravena/HoloCMS
 |+==================================+
 || # HoloCMS is provided "as is" and comes without
@@ -29,7 +29,7 @@ if(empty($pagename)) {
     <meta http-equiv="Expires" content="Mon, 06 May 1996 04:57:00 GMT" />
     <link rel="shortcut icon" href="favicon.ico" />
     <style type="text/css" media="all">
-    @import url("./css/hk_style.css");
+    @import url("<?php echo $housekeeping; ?>css/hk_style.css");
     </style>
-    <script type="text/javascript" src="./js/hk_js.js"></script>
+    <script type="text/javascript" src="<?php echo $housekeeping; ?>js/hk_js.js"></script>
   </head>

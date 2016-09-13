@@ -2,13 +2,12 @@
 /*==================================+
 || # HoloCMS - Website and Content Management System
 |+==================================+
-|| # Copyright © 2016 Miguel González Aravena. All rights reserved.
+|| # Copyright Â© 2016 Miguel GonzÃ¡lez Aravena. All rights reserved.
 || # https://github.com/MiguelGonzalezAravena/HoloCMS
 |+==================================+
 || # HoloCMS is provided "as is" and comes without
 || # warrenty of any kind. HoloCMS is free software!
 |+==================================*/
-
 require_once(dirname(__FILE__) . '/../core.php');
 ($hkzone != true ? header('Location: index.php?throwBack=true') : '');
 (!isset($_SESSION['acp']) ? header('Location: index.php?p=login') : '');
@@ -49,7 +48,7 @@ if(
   ) {
   mysqli_query($connection, "INSERT INTO cms_application_forms(name, introduction, requirements, hconly, username, realname, birth, sex, country, general_information, show_disclaimer, disclaimer_text, enabled) VALUES ('{$name}', '{$introduction}', '{$requirements}', '{$hconly}', '{$username}', '{$realname}', '{$birth}', '{$sex}', '{$country}', '{$general_information}', '{$show_disclaimer}', '{$disclaimer}', '{$enabled}')") or die(mysqli_error($connection));
   $msg = 'Succesfully added';
-} else if(isset($_POST['name'])) {
+} else if(!empty($name)) {
   $msg = 'Fill in all fields!';
 }
 ?>
@@ -59,7 +58,7 @@ if(
         <div>
           <!-- LEFT CONTEXT SENSITIVE MENU -->
           <?php require_once(dirname(__FILE__) . '/usermenu.php'); ?>
-            <!-- / LEFT CONTEXT SENSITIVE MENU -->
+          <!-- / LEFT CONTEXT SENSITIVE MENU -->
         </div>
       </td>
       <td width="78%" valign="top" id="rightblock">
@@ -74,8 +73,8 @@ if(
                     <tr>
                       <td class="tablerow2" width="100%" valign="middle" align="center">
                         <select name="category" class="dropdown">
-                          <option value="1" <?php echo ($catId==1 ? ' selected="selected"' : ''); ?>>Application forms</option>
-                          <option value="2" <?php echo ($catId==2 ? ' selected="selected"' : ''); ?>>Add application form</option>
+                          <option value="1"<?php echo ($catId == 1 ? ' selected="selected"' : ''); ?>>Application forms</option>
+                          <option value="2"<?php echo ($catId == 2 ? ' selected="selected"' : ''); ?>>Add application form</option>
                         </select>
                         &nbsp;
                         <input type="submit" value="Go" class="realbutton" accesskey="s">
@@ -173,8 +172,8 @@ if(
                       <div class="graytext">Can only people who are member of HC apply?</div>
                     </td>
                     <td class="tablerow2" width="60%" valign="middle">
-                      <input type="radio" name="hconly" value="0" <?php echo ($hconly == 0 ? ' checked' : ''); ?>> Everybody can apply
-                      <input type="radio" name="hconly" value="1" <?php echo ($hconly == 1 ? ' checked' : ''); ?>> HC Only can apply</td>
+                      <input type="radio" name="hconly" value="0"<?php echo ($hconly == 0 ? ' checked' : ''); ?>> Everybody can apply
+                      <input type="radio" name="hconly" value="1"<?php echo ($hconly == 1 ? ' checked' : ''); ?>> HC Only can apply</td>
                   </tr>
                   <tr>
                     <td class="tablerow1" width="40%" valign="middle"><b>Username?</b>
@@ -182,16 +181,16 @@ if(
                         <br><b>Username:</b> membername</div>
                     </td>
                     <td class="tablerow2" width="60%" valign="middle">
-                      <input type="radio" name="username" value="0" <?php echo ($username == 0 ? ' checked' : ''); ?>> No
-                      <input type="radio" name="username" value="1" <?php echo ($username == 1 ? ' checked' : ''); ?>> Yes</td>
+                      <input type="radio" name="username" value="0"<?php echo ($username == 0 ? ' checked' : ''); ?>> No
+                      <input type="radio" name="username" value="1"<?php echo ($username == 1 ? ' checked' : ''); ?>> Yes</td>
                   </tr>
                   <tr>
                     <td class="tablerow1" width="40%" valign="middle"><b>Real name?</b>
                       <div class="graytext">Need people to fill in their real name?</div>
                     </td>
                     <td class="tablerow2" width="60%" valign="middle">
-                      <input type="radio" name="realname" value="0" <?php echo ($realname == 0 ? ' checked' : ''); ?>> No
-                      <input type="radio" name="realname" value="1" <?php echo ($realname == 1 ? ' checked' : ''); ?>> Yes</td>
+                      <input type="radio" name="realname" value="0"<?php echo ($realname == 0 ? ' checked' : ''); ?>> No
+                      <input type="radio" name="realname" value="1"<?php echo ($realname == 1 ? ' checked' : ''); ?>> Yes</td>
                   </tr>
                   <tr>
                     <td class="tablerow1" width="40%" valign="middle"><b>Birth?</b>
@@ -199,64 +198,64 @@ if(
                         <br><b>Date of birth:</b> 24-02-1991</div>
                     </td>
                     <td class="tablerow2" width="60%" valign="middle">
-                      <input type="radio" name="birth" value="0" <?php echo ($birth == 0 ? ' checked' : ''); ?>> No
-                      <input type="radio" name="birth" value="1" <?php echo ($birth == 1 ? ' checked' : ''); ?>> Yes</td>
+                      <input type="radio" name="birth" value="0"<?php echo ($birth == 0 ? ' checked' : ''); ?>> No
+                      <input type="radio" name="birth" value="1"<?php echo ($birth == 1 ? ' checked' : ''); ?>> Yes</td>
                   </tr>
                   <tr>
                     <td class="tablerow1" width="40%" valign="middle"><b>Sex?</b>
                       <div class="graytext">Need people to fill in what they are (male/female/shemale)?</div>
                     </td>
                     <td class="tablerow2" width="60%" valign="middle">
-                      <input type="radio" name="sex" value="0" <?php echo ($sex == 0 ? ' checked' : ''); ?>> No
-                      <input type="radio" name="sex" value="1" <?php echo ($sex == 1 ? ' checked' : ''); ?>> Yes</td>
+                      <input type="radio" name="sex" value="0"<?php echo ($sex == 0 ? ' checked' : ''); ?>> No
+                      <input type="radio" name="sex" value="1"<?php echo ($sex == 1 ? ' checked' : ''); ?>> Yes</td>
                   </tr>
                   <tr>
                     <td class="tablerow1" width="40%" valign="middle"><b>Country?</b>
                       <div class="graytext">Need people to fill in, in what country they live?</div>
                     </td>
                     <td class="tablerow2" width="60%" valign="middle">
-                      <input type="radio" name="country" value="0" <?php echo ($country == 0 ? ' checked' : ''); ?>> No
-                      <input type="radio" name="country" value="1" <?php echo ($country == 1 ? ' checked' : ''); ?>> Yes</td>
+                      <input type="radio" name="country" value="0"<?php echo ($country == 0 ? ' checked' : ''); ?>> No
+                      <input type="radio" name="country" value="1"<?php echo ($country == 1 ? ' checked' : ''); ?>> Yes</td>
                   </tr>
                   <tr>
                     <td class="tablerow1" width="40%" valign="middle"><b>Experience?</b>
                       <div class="graytext">Need people to fill in their experience with this job (if they did it before)?</div>
                     </td>
                     <td class="tablerow2" width="60%" valign="middle">
-                      <input type="radio" name="experience" value="0" <?php echo ($experience == 0 ? ' checked' : ''); ?>> No
-                      <input type="radio" name="experience" value="1" <?php echo ($experience == 1 ? ' checked' : ''); ?>> Yes</td>
+                      <input type="radio" name="experience" value="0"<?php echo ($experience == 0 ? ' checked' : ''); ?>> No
+                      <input type="radio" name="experience" value="1"<?php echo ($experience == 1 ? ' checked' : ''); ?>> Yes</td>
                   </tr>
                   <tr>
                     <td class="tablerow1" width="40%" valign="middle"><b>Education?</b>
                       <div class="graytext">Need people to fill in what study the do or did?</div>
                     </td>
                     <td class="tablerow2" width="60%" valign="middle">
-                      <input type="radio" name="education" value="0" <?php echo ($education == 0 ? ' checked' : ''); ?>> No
-                      <input type="radio" name="education" value="1" <?php echo ($education == 1 ? ' checked' : ''); ?>> Yes</td>
+                      <input type="radio" name="education" value="0"<?php echo ($education == 0 ? ' checked' : ''); ?>> No
+                      <input type="radio" name="education" value="1"<?php echo ($education == 1 ? ' checked' : ''); ?>> Yes</td>
                   </tr>
                   <tr>
                     <td class="tablerow1" width="40%" valign="middle"><b>General information?</b>
                       <div class="graytext">Need people to fill in general information (why they want to do this job, why they are interested etc.)?</div>
                     </td>
                     <td class="tablerow2" width="60%" valign="middle">
-                      <input type="radio" name="general_information" value="0" <?php echo ($general_information == 0 ? ' checked' : ''); ?>> No
-                      <input type="radio" name="general_information" value="1" <?php echo ($general_information == 1 ? ' checked' : ''); ?>> Yes</td>
+                      <input type="radio" name="general_information" value="0"<?php echo ($general_information == 0 ? ' checked' : ''); ?>> No
+                      <input type="radio" name="general_information" value="1"<?php echo ($general_information == 1 ? ' checked' : ''); ?>> Yes</td>
                   </tr>
                   <tr>
                     <td class="tablerow1" width="40%" valign="middle"><b>Additional information?</b>
                       <div class="graytext">Need people to fill in additional information (what their hobbies are etc.)?</div>
                     </td>
                     <td class="tablerow2" width="60%" valign="middle">
-                      <input type="radio" name="additional_information" value="0" <?php echo ($additional_information == 0 ? ' checked' : ''); ?>> No
-                      <input type="radio" name="additional_information" value="1" <?php echo ($additional_information == 1 ? ' checked' : ''); ?>> Yes</td>
+                      <input type="radio" name="additional_information" value="0"<?php echo ($additional_information == 0 ? ' checked' : ''); ?>> No
+                      <input type="radio" name="additional_information" value="1"<?php echo ($additional_information == 1 ? ' checked' : ''); ?>> Yes</td>
                   </tr>
                   <tr>
                     <td class="tablerow1" width="40%" valign="middle"><b>Show disclaimer?</b>
                       <div class="graytext">Need people to read a disclaimer before they can submit there application?</div>
                     </td>
                     <td class="tablerow2" width="60%" valign="middle">
-                      <input type="radio" name="show_disclaimer" value="0" <?php echo ($show_disclaimer == 0 ? ' checked' : ''); ?>> No
-                      <input type="radio" name="show_disclaimer" value="1" <?php echo ($show_disclaimer == 1 ? ' checked' : ''); ?>> Yes</td>
+                      <input type="radio" name="show_disclaimer" value="0"<?php echo ($show_disclaimer == 0 ? ' checked' : ''); ?>> No
+                      <input type="radio" name="show_disclaimer" value="1"<?php echo ($show_disclaimer == 1 ? ' checked' : ''); ?>> Yes</td>
                   </tr>
                   <tr>
                     <td class="tablerow1" width="40%" valign="middle"><b>Disclaimer</b>
@@ -289,7 +288,7 @@ if(
                 }
 
                 if(empty($catId)) {
-                ?>
+            ?>
               <div class="tableborder">
                 <div class="tableheaderalt">
                   <?php echo $sitename; ?> application forms editor</div>
