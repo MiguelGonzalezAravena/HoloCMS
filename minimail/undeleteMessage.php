@@ -11,14 +11,12 @@
 require_once(dirname(__FILE__) . '/../core.php');
 require_once(dirname(__FILE__) . '/../includes/session.php');
 
-$id = $_POST['messageId'];
-$start = $_POST['start'];
-$label = $_POST['label'];
-
+$id = isset($_POST['messageId']) ? (int) $_POST['messageId'] : 0;
+$start = isset($_POST['start']) ? (int) $_POST['start'] : 0;
+$label = isset($_POST['label']) ? FilterText($_POST['label']) : '';
 mysqli_query($connection, "UPDATE cms_minimail SET deleted = '0' WHERE id = '{$id}'");
-
-$bypass = "true";
-$page = "inbox";
-$message = "Message undeleted.";
-include('loadMessage.php');
+$bypass = true;
+$page = 'inbox';
+$message = 'Message undeleted.';
+require_once(dirname(__FILE__) . '/loadMessage.php');
 ?>
