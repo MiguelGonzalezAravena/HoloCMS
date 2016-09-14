@@ -78,7 +78,8 @@ if(!empty($mesid)) {
 
 if(!empty($label) || $bypass) {
   if($bypass) {
-    $label = $page;
+    // Why is this here?
+    //$label = $page;
     $start = $startpage;
   }
 ?>
@@ -91,7 +92,7 @@ if(!empty($label) || $bypass) {
       ?>
       <li <?php echo ($label == 'inbox' ? 'class="selected"' : ''); ?>><a href="#" label="inbox">Inbox<?php echo ($unreadmail != 0 ? ' (' . $unreadmail . ')' : ''); ?></a><span class="tab-spacer"></span></li>
       <li <?php echo ($label == 'sent' ? 'class="selected"' : ''); ?>><a href="#" label="sent">Sent</a><span class="tab-spacer"></span></li>
-      <li <?php echo ($label == 'traash' ? 'class="selected"' : ''); ?>><a href="#" label="trash">Trash</a><span class="tab-spacer"></span></li>
+      <li <?php echo ($label == 'trash' ? 'class="selected"' : ''); ?>><a href="#" label="trash">Trash</a><span class="tab-spacer"></span></li>
     </ul>
   </div>
   <div id="message-list" class="label-<?php echo $label; ?>">
