@@ -10,13 +10,10 @@
 |+===================================================*/
 (!defined('IN_HOLOCMS')) ? header('Location: ../index.php') : '';
 
-if (!defined("IN_HOLOCMS")) { header("Location: ../index.php"); exit; }
+if(getContent('allow-guests') != 1) {
+  // we don't take kindly to your kind around here
+  $allow_guests = false;
+}
 
-if(getContent('allow-guests') != "1")
-    // we don't take kindly to your kind around here
-    $allow_guests = false;
-
-if(!$_SESSION["username"] && $allow_guests != true)
-    header("Location: index.php");
-
+(!$_SESSION['username'] && $allow_guests != true) ? header('Location: index.php') : '';
 ?>
