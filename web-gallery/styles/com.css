@@ -1,0 +1,11 @@
+#front-tags div.cb {
+    display: none;
+}
+
+#front-tags {
+    height: 194px;
+    width: 310px;
+    background-image: url("http://images.habbohotel.com/c_images/album1326/summer_habblet_US.png");
+    background-repeat: no-repeat;
+    margin-left:0px;
+}

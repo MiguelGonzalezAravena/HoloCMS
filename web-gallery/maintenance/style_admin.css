@@ -1,0 +1,54 @@
+/* --- bubble --- */
+
+div.bubble {
+  background-image: url('bubble_tl.gif');
+  background-repeat: no-repeat;
+  margin-bottom: 0px;
+}
+
+div.bubble-body {
+  margin-left: 11px;
+  padding-top: 11px;
+  padding-right: 11px;
+  margin-bottom: 0;
+  background-image: url('bubble_tr.gif');
+  background-repeat: no-repeat;
+  background-position: top right;
+  text-align: left;
+}
+
+div.bubble-bottom {
+  position: relative;
+  clear: both;
+  background-image: url('bubble_bl.gif');
+  background-repeat: no-repeat;
+  background-position: top left;
+  margin-top: 0;
+  margin-bottom: 3px;
+  text-align: center;
+}
+
+div.bubble-bottom-body {
+  margin-left: 11px;
+  margin-top: 0;
+  background-image: url('bubble_br.gif');
+  background-repeat: no-repeat;
+  background-position: top right;
+}
+
+div#left_col {
+  position: relative;
+  float: left;
+  width: 286px;
+  right: 0;
+  text-align: center;
+  display: block;
+  margin-left: auto;
+}
+
+div#right_col {
+  position: relative;
+  float: left;
+  width: 286px;
+  text-align: center;
+}
