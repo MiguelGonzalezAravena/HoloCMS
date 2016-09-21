@@ -1,20 +1,20 @@
 <?php
-/*==================================+
+/*===================================================+
 || # HoloCMS - Website and Content Management System
-|+==================================+
+|+===================================================+
 || # Copyright © 2016 Miguel González Aravena. All rights reserved.
 || # https://github.com/MiguelGonzalezAravena/HoloCMS
-|+==================================+
-|| # HoloCMS is provided "as is" and comes without
+|+===================================================+
+|| # HoloCMS is provided 'as is" and comes without
 || # warrenty of any kind. HoloCMS is free software!
-|+==================================*/
+|+===================================================*/
 require_once(dirname(__FILE__) . '/../core.php');
 ($hkzone != true ? header('Location: index.php?throwBack=true') : '');
 (!isset($_SESSION['acp']) ? header('Location: index.php?p=login') : '');
 (!function_exists('SendMUSData') ? require_once(dirname(__FILE__) . '/../includes/mus.php') : '');
 
 $pagename = 'Alert';
-$alert = isset($_POST['alert']) ? HoloText($_POST['alert']) : '';
+$alert = isset($_POST['alert']) ? FilterText($_POST['alert']) : '';
 $username = isset($_POST['username']) ? FilterText($_POST['username']) : '';
 $musalert = isset($_POST['musalert']) ? FilterText($_POST['musalert']) : '';
 
@@ -57,7 +57,7 @@ require_once(dirname(__FILE__) . '/header.php');
         <div>
           <!-- LEFT CONTEXT SENSITIVE MENU -->
           <?php require_once(dirname(__FILE__) . '/usermenu.php'); ?>
-            <!-- / LEFT CONTEXT SENSITIVE MENU -->
+          <!-- / LEFT CONTEXT SENSITIVE MENU -->
         </div>
       </td>
       <td width="78%" valign="top" id="rightblock">
@@ -83,9 +83,7 @@ require_once(dirname(__FILE__) . '/header.php');
                     <div class="graytext">The actual message that will be shown to the user.</div>
                   </td>
                   <td class="tablerow2" width="60%" valign="middle">
-                    <textarea name="alert" cols="60" rows="5" wrap="soft" id="sub_desc" class="multitext">
-                      <?php echo $alert; ?>
-                    </textarea>
+                    <textarea name="alert" cols="60" rows="5" wrap="soft" id="sub_desc" class="multitext"><?php echo $alert; ?></textarea>
                   </td>
                 </tr>
                 <tr>

@@ -1,13 +1,13 @@
 <?php
-/*==================================+
+/*===================================================+
 || # HoloCMS - Website and Content Management System
-|+==================================+
+|+===================================================+
 || # Copyright © 2016 Miguel González Aravena. All rights reserved.
 || # https://github.com/MiguelGonzalezAravena/HoloCMS
-|+==================================+
+|+===================================================+
 || # HoloCMS is provided "as is" and comes without
 || # warrenty of any kind. HoloCMS is free software!
-|+==================================*/
+|+===================================================*/
 require_once(dirname(__FILE__) . '/../core.php');
 ($hkzone != true ? header('Location: index.php?throwBack=true') : '');
 (!isset($_SESSION['acp']) ? header('Location: index.php?p=login') : '');
@@ -68,7 +68,7 @@ require_once(dirname(__FILE__) . '/header.php');
         <div>
           <!-- LEFT CONTEXT SENSITIVE MENU -->
           <?php require_once(dirname(__FILE__) . '/usermenu.php'); ?>
-            <!-- / LEFT CONTEXT SENSITIVE MENU -->
+          <!-- / LEFT CONTEXT SENSITIVE MENU -->
         </div>
       </td>
       <td width="78%" valign="top" id="rightblock">
@@ -95,15 +95,15 @@ require_once(dirname(__FILE__) . '/header.php');
                   <td class="tablesubheader" width="1%" align="center">Delete</td>
                 </tr>
                 <?php
-              $get_articles = mysqli_query($connection, "SELECT id, username, ip, message, date, picked_up, subject, roomid FROM cms_help ORDER BY id DESC") or die(mysqli_error($connection));
-              $total = mysqli_num_rows($get_articles);
-              if($total == 0) {
-                echo '<tr><td colspan="8" class="tablerow1"><center><strong>No help queries.</strong></center></td></tr>';
-              } else {
-                while($row = mysqli_fetch_assoc($get_articles)) {
-                  $roomid = (!empty($row['roomid'])) ? $row['roomid'] : 'N/A';
-                  $picked = ($row['picked_up'] == 1 ? 'Yes' : 'No (<a href="index.php?p=helper&do=pick&key=' . $row['id'] . '">Pick up</a>)');
-            ?>
+                  $get_articles = mysqli_query($connection, "SELECT id, username, ip, message, date, picked_up, subject, roomid FROM cms_help ORDER BY id DESC") or die(mysqli_error($connection));
+                  $total = mysqli_num_rows($get_articles);
+                  if($total == 0) {
+                    echo '<tr><td colspan="8" class="tablerow1"><center><strong>No help queries.</strong></center></td></tr>';
+                  } else {
+                    while($row = mysqli_fetch_assoc($get_articles)) {
+                      $roomid = (!empty($row['roomid'])) ? $row['roomid'] : 'N/A';
+                      $picked = ($row['picked_up'] == 1 ? 'Yes' : 'No (<a href="index.php?p=helper&do=pick&key=' . $row['id'] . '">Pick up</a>)');
+                ?>
                 <tr>
                   <td class="tablerow1" align="center">
                     <?php echo $row['id']; ?>
@@ -126,10 +126,10 @@ require_once(dirname(__FILE__) . '/header.php');
                   <td class="tablerow2" align="center"><a href="index.php?p=alert&do=quickreply&key=<?php echo $row['id']; ?>"><img src="<?php echo $housekeeping; ?>images/edit.gif" alt="Quick Reply"></a></td>
                   <td class="tablerow2" align="center"><a href="index.php?p=helper&do=delete&key=<?php echo $row['id']; ?>"><img src="<?php echo $housekeeping; ?>images/delete.gif" alt="Delete"></a></td>
                 </tr>
-                  <?php
-                }
-              }
-            ?>
+                <?php
+                    }
+                  }
+                ?>
               </table>
               <div class="tablefooter" align="center">
                 <div class="fauxbutton-wrapper"><span class="fauxbutton"><a href="index.php?p=helper&x=refreshStatic">Refresh overview</a></span></div>
@@ -171,7 +171,7 @@ require_once(dirname(__FILE__) . '/header.php');
                     <div class="graytext">If the query was submitted in the hotel, the Room ID will be shown in this field.</div>
                   </td>
                   <td class="tablerow2" width="60%" valign="middle">
-                    <input type="text" name="attrb" readonly="readonly" value="<?php if($viewdata['roomid'] > 0) { echo $viewdata['roomid']; } else { echo " N/A "; } ?>" size="30" class="textinput">
+                    <input type="text" name="attrb" readonly="readonly" value="<?php echo ($viewdata['roomid'] > 0 ? $viewdata['roomid'] : ' N/A '); ?>" size="30" class="textinput">
                   </td>
                 </tr>
                 <tr>
@@ -182,9 +182,7 @@ require_once(dirname(__FILE__) . '/header.php');
                     <div class="graytext">The actual query submitted by the user via the Help Tool or ingame CFH tool.</div>
                   </td>
                   <td class="tablerow2" width="60%" valign="middle">
-                    <textarea name="data" cols="60" rows="8" readonly="readonly" wrap="soft" id="sub_desc" class="multitext">
-                      <?php echo $viewdata['message']; ?>
-                    </textarea>
+                    <textarea name="data" cols="60" rows="8" readonly="readonly" wrap="soft" id="sub_desc" class="multitext"><?php echo $viewdata['message']; ?></textarea>
                   </td>
                 </tr>
                 <tr>
@@ -229,8 +227,8 @@ require_once(dirname(__FILE__) . '/header.php');
 <div align="center">
   <br />
   <?php
-  $mtime = explode(' ', microtime());
-  $totaltime = $mtime[0] + $mtime[1] - $starttime;
-  printf('Time: %.3f', $totaltime);
-?>
+    $mtime = explode(' ', microtime());
+    $totaltime = $mtime[0] + $mtime[1] - $starttime;
+    printf('Time: %.3f', $totaltime);
+  ?>
 </div>
