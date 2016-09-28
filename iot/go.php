@@ -69,7 +69,7 @@ if(!empty($post)) {
       $result = 'Invalid post specified';
       $disableform = 1;
     } else {
-      $result = 'Is the post you have selected offensive or breaking the rules? Are you sure you want to report this post?<br /><br /><a href="{$path}go.php?do=report&post=' . $post . '&page=' . $page . '&sure=yes">Proceed</a>';
+      $result = 'Is the post you have selected offensive or breaking the rules? Are you sure you want to report this post?<br /><br /><a href="' . $path . 'iot/go.php?do=report&post=' . $post . '&page=' . $page . '&sure=yes">Proceed</a>';
       $disableform = 1;
     }
   } else {
