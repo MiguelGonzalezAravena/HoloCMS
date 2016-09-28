@@ -8,7 +8,8 @@
 || # HoloCMS is provided "as is" and comes without
 || # warrenty of any kind. HoloCMS is free software!
 |+===================================================*/
-require_once(dirname(__FILE__) . '/../core.php'); 
+require_once(dirname(__FILE__) . '/../core.php');
+require_once(dirname(__FILE__) . '/../includes/session.php'); 
 (!function_exists('SendMUSData') ? require_once(dirname(__FILE__) . '/../includes/mus.php') : '');
 
 $sql = mysqli_query($connection, "SELECT credits FROM users WHERE id = '{$my_id}' LIMIT 1");

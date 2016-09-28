@@ -9,6 +9,7 @@
 || # warrenty of any kind. HoloCMS is free software!
 |+===================================================*/
 require_once(dirname(__FILE__) . '/../core.php');
+
 $months = isset($_POST['optionNumber']) ? (int) $_POST['optionNumber'] : 0;
 
 if(!$_SESSION['username']) {

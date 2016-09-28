@@ -8,7 +8,8 @@
 || # HoloCMS is provided "as is" and comes without
 || # warrenty of any kind. HoloCMS is free software!
 |+===================================================*/
-require_once(dirname(__FILE__) . '/../core.php'); 
+require_once(dirname(__FILE__) . '/../core.php');
+require_once(dirname(__FILE__) . '/../includes/session.php'); 
 
 $id = isset($_POST['accountId']) ? (int) $_POST['accountId'] : 0;
 $sql = mysqli_query($connection, "SELECT name FROM users WHERE id = '{$id}' LIMIT 1");

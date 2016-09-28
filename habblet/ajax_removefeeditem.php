@@ -8,12 +8,6 @@
 || # HoloCMS is provided "as is" and comes without
 || # warrenty of any kind. HoloCMS is free software!
 |+===================================================*/
-
-/**
- * AJAX Tool to remove Feed Item Alerts
- * Will be called upon by the means of a JavaScript request where needed.
- */
-
 $allow_guests = false;
 
 require_once(dirname(__FILE__) . '/../core.php');

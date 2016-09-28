@@ -38,7 +38,7 @@ $xid = (isset($groupid)) ? $groupid : $user_row['id'];
     var habboReqPath = '';
     var habboStaticFilePath = '<?php echo $web_gallery; ?>';
     var habboImagerUrl = '<?php echo $path; ?>habbo-imaging/';
-    var habboPartner = 'Meth0d.org';
+    var habboPartner = 'HoloCMS';
     window.name = 'habboMain';
   </script>
   <link rel="stylesheet" href="<?php echo $web_gallery; ?>styles/myhabbo/myhabbo.css" type="text/css" />

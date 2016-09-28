@@ -39,7 +39,7 @@ $body_id = isset($body_id) ? $body_id : '';
     var habboReqPath = '';
     var habboStaticFilePath = '<?php echo $web_gallery; ?>';
     var habboImagerUrl = '<?php echo $path; ?>habbo-imaging/';
-    var habboPartner = 'Meth0d.org';
+    var habboPartner = 'HoloCMS';
     window.name = 'habboMain';
   </script>
 

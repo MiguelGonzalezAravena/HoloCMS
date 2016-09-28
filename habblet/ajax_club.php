@@ -22,6 +22,6 @@ if(!isset($_SESSION['username'])) {
   exit;
 }
 
-echo '<p>You are' . (!IsHCMember($my_id) ? ' not' : '') . 'a member of ' . $shortname . ' Club</p>';
+echo '<p>You are' . (!IsHCMember($my_id) ? ' not' : '') . ' a member of ' . $shortname . ' Club</p>';
 echo '<p>' . (IsHCMember($my_id) ? 'You have ' . HCDaysLeft($my_id) . ' Club Day(s) left.' : '&nbsp;') . '</p>';
 ?>

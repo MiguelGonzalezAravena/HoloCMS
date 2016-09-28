@@ -24,12 +24,10 @@ $tag_2_results = mysqli_num_rows($tmp);
 if($tag_1_results == $tag_2_results) {
   $end = 0;
 } elseif($tag_1_results > $tag_2_results) {
-  $tag_1 = '<b>' . $tag1 . '</b>';
-  $tag_2 = $_POST['tag2'];
+  $tag_1 = '<b>' . $tag_1 . '</b>';
   $end = 2;
 } elseif($tag_1_results < $tag_2_results) {
-  $tag_1 = $_POST['tag1'];
-  $tag_2 = '<b>' . $tag2 . '</b>';
+  $tag_2 = '<b>' . $tag_2 . '</b>';
   $end = 1;
 }
 ?>
@@ -39,7 +37,7 @@ if($tag_1_results == $tag_2_results) {
   <?php echo HoloText($tag_2); ?> (<?php echo $tag_2_results; ?>) hits
 </div>
 <div class="fight-image">
-  <img src="<?php echo $web_gallery; ?>images/tagfight/tagfight_end_<?php echo $end; ?>.gif" alt=" name="fightanimation" id="fightanimation" />
+  <img src="<?php echo $web_gallery; ?>images/tagfight/tagfight_end_<?php echo $end; ?>.gif" alt="" name="fightanimation" id="fightanimation" />
   <a id="tag-fight-button-new" href="#" class="new-button" onclick="TagFight.newFight(); return false;"><b>Again?</b><i></i></a>
   <a id="tag-fight-button" href="#" style="display:none" class="new-button" onclick="TagFight.init(); return false;"><b>Start</b><i></i></a>
 </div>

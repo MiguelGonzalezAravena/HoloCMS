@@ -21,7 +21,6 @@ if($hid == 'h120') {
   <head>
     <link rel="stylesheet" href="<?php echo $web_gallery; ?>v2/styles/rooms.css" type="text/css" />
     <script src="<?php echo $web_gallery; ?>static/js/rooms.js" type="text/javascript"></script>
-    <script src="<?php echo $web_gallery; ?>static/js/rooms.js" type="text/javascript"></script>
   </head>
   <div id="rooms-habblet-list-container-h120" class="recommendedrooms-lite-habblet-list-container">
     <ul class="habblet-list">
@@ -59,7 +58,7 @@ if($hid == 'h120') {
         <span class="clearfix enter-room-link room-occupancy-<?php echo $room_fill; ?>" title="Go to room" roomid="<?php echo $row['id']; ?>">
           <span class="room-enter">Enter</span>
           <span class="room-name"><?php echo $roomname; ?></span>
-          <span class="room-description"><?php echo $row['descr']; ?></span>
+          <span class="room-description"><?php echo $row['description']; ?></span>
           <span class="room-owner">Owner: <a href="<?php echo $path; ?>user_profile.php?name=<?php echo $row['owner']; ?>"><?php echo $row['owner']; ?></a></span>
         </span>
       </li>

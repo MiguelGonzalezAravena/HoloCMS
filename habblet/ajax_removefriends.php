@@ -9,6 +9,8 @@
 || # warrenty of any kind. HoloCMS is free software!
 |+===================================================*/
 require_once(dirname(__FILE__) . '/../core.php');
+require_once(dirname(__FILE__) . '/../includes/session.php'); 
+
 $pagesize = isset($_POST['pageSize']) ? (int) $_POST['pageSize'] : 0;
 $friends = isset($_POST['friendList']) ? FilterText($_POST['friendList']) : '';
 $friendid = isset($_POST['friendId']) ? (int) $_POST['friendId'] : 0;;

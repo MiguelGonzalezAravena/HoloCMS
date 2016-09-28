@@ -34,12 +34,10 @@ while ($row = mysqli_fetch_assoc($getem)) {
 	);
 }
 ?>
-/*-secure-
-<?php
+/*-secure-<?php
 if(sizeof($json_data) > 0) {
 	array_push($output, $json_data);
 }
 
 echo json_encode($output);
-?>
- */
+?>*/

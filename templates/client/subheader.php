@@ -29,7 +29,7 @@
       var habboReqPath = '';
       var habboStaticFilePath = '<?php echo $web_gallery; ?>';
       var habboImagerUrl = '<?php echo $path; ?>habbo-imaging/';
-      var habboPartner = '';
+      var habboPartner = 'HoloCMS';
       window.name = 'client';
     </script>
     <script src="<?php echo $web_gallery; ?>static/js/habboclient.js" type="text/javascript"></script>

@@ -9,6 +9,7 @@
 || # warrenty of any kind. HoloCMS is free software!
 |+===================================================*/
 require_once(dirname(__FILE__) . '/../core.php');
+require_once(dirname(__FILE__) . '/../includes/session.php'); 
 
 // calculate time
 $date = mktime(0, 0, 0, $n, $j, $y);

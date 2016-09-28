@@ -29,19 +29,17 @@ $pagename = (!isset($pagename)) ? 'Home' : $pagename;
   <link rel="stylesheet" href="<?php echo $web_gallery; ?>v2/styles/boxes.css" type="text/css" />
   <link rel="stylesheet" href="<?php echo $web_gallery; ?>v2/styles/tooltips.css" type="text/css" />
   <link rel="stylesheet" href="<?php echo $web_gallery; ?>v2/styles/process.css" type="text/css" />
-
   <script type="text/javascript">
     document.habboLoggedIn = false;
     var habboName = null;
     var habboReqPath = '';
     var habboStaticFilePath = '<?php echo $web_gallery; ?>';
-    var habboImagerUrl = <?php echo $path; ?>habbo-imaging/';
-    var habboPartner = '';
+    var habboImagerUrl = '<?php echo $path; ?>habbo-imaging/';
+    var habboPartner = 'HoloCMS';
     window.name = 'habboMain';
   </script>
   <meta name="description" content="<?php echo ucfirst($sitename); ?> is a virtual world where you can meet and make friends." />
   <meta name="keywords" content="<?php echo strtolower($shortname); ?>, <?php echo strtolower($sitename); ?>, virtual world, play games, enter competitions, make friends" />
-
   <!--[if lt IE 8]>
   <link rel="stylesheet" href="<?php echo $web_gallery; ?>v2/styles/ie.css" type="text/css" />
   <![endif]-->
@@ -51,7 +49,6 @@ $pagename = (!isset($pagename)) ? 'Home' : $pagename;
   <script type="text/javascript">
   try { document.execCommand('BackgroundImageCache', false, true); } catch(e) {}
   </script>
-
   <style type="text/css">
   body { behavior: url(<?php echo $web_gallery; ?>csshover.htc); }
   </style>

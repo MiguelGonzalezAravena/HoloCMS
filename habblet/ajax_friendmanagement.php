@@ -8,7 +8,8 @@
 || # HoloCMS is provided "as is" and comes without
 || # warrenty of any kind. HoloCMS is free software!
 |+===================================================*/
-require_once(dirname(__FILE__) . '/../core.php'); 
+require_once(dirname(__FILE__) . '/../core.php');
+require_once(dirname(__FILE__) . '/../includes/session.php'); 
 
 $page = isset($_GET['pageNumber']) ? (int) $_GET['pageNumber'] : 1;
 $pagesize = isset($_GET['pageSize']) ? (int) $_GET['pageSize'] : 1;

@@ -26,8 +26,7 @@
           </p>
           <?php /*@@* DO NOT EDIT OR REMOVE THE LINE BELOW WHATSOEVER! *@@ You ARE allowed to remove the link to the HoloCMS site though*/ ?>
           <p>
-            Powered by <a href="https://github.com/MiguelGonzalezAravena/HoloCMS" target="_blank">HoloCMS</a> &copy; Miguel González Aravena.<br />
-            <?php echo $locale['copyright_habbo']; ?>
+            Powered by <a href="https://github.com/MiguelGonzalezAravena/HoloCMS" target="_blank">HoloCMS</a> &copy; Miguel González Aravena.
           </p>
           <?php /*@@* DO NOT EDIT OR REMOVE THE LINE ABOVE WHATSOEVER! *@@ You ARE allowed to remove the link to the HoloCMS site though*/ ?>
         </div>

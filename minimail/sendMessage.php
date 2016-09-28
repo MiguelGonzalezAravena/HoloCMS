@@ -50,7 +50,5 @@ while ($elements != $i) {
 $bypass = true;
 $page = 'inbox';
 $message = 'Message sent sucessfully.';
-if($bypass1 != true) {
-  require_once(dirname(__FILE__) . '/loadMessage.php');
-}
+($bypass1 != true) ? require_once(dirname(__FILE__) . '/loadMessage.php') : '');
 ?>

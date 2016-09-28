@@ -68,7 +68,7 @@ switch($row['type']) {
         <span class="topic-name-text" id="topic_name_text">Topic: (max 30 characters)</span>
       </div>
       <div class="topic-name-input">
-        <input type="text" size="40" maxlength="30" name="topic_name" id="topic_name" onKeyUp="GroupUtils.validateGroupElements('topic_name', 32, 'myhabbo.topic.name.max.length.exceeded');" value="<?php echo $row['title']; ?>" />
+        <input type="text" size="37" maxlength="30" name="topic_name" id="topic_name" onKeyUp="GroupUtils.validateGroupElements('topic_name', 32, 'myhabbo.topic.name.max.length.exceeded');" value="<?php echo $row['title']; ?>" />
       </div>
       <div id="topic-name-error"></div>
       <div id="topic_name_message_error" class="error"></div>
