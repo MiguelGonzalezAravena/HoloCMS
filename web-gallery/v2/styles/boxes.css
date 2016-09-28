@@ -225,26 +225,26 @@ div.bottom-bubble-c {
 }
 
 div.bottom-bubble-t {
-	background: url(..../images/groups/editbubble-tl.png) no-repeat 0 100%;
+	background: url(../images/groups/editbubble-tl.png) no-repeat 0 100%;
 	font-size: 1px;
 	margin-right: 5px;
 	text-align: right;
 }
 
 div.bottom-bubble-t div {
-	background: url(..../images/groups/editbubble-tr.png) no-repeat 100% 100%;
+	background: url(../images/groups/editbubble-tr.png) no-repeat 100% 100%;
 	padding-top: 15px;
 	margin-right: -5px;
 }
 
 div.bottom-bubble-b {
-	background: url(..../images/groups/editbubble-bl.png) no-repeat 0 0;
+	background: url(../images/groups/editbubble-bl.png) no-repeat 0 0;
 	font-size: 1px;
 	margin-right: 5px;
 }
 
 div.bottom-bubble-b div {
-	background: url(..../images/groups/editbubble-br.png) no-repeat 100% 0;
+	background: url(../images/groups/editbubble-br.png) no-repeat 100% 0;
 	padding-top: 5px;
 	margin-right: -5px;
 }
@@ -260,7 +260,7 @@ div.hotel-open-image-splash, div.hotel-closed-image-splash {
     margin-left:3px;
     width: 106px;
     height:106px;
-    background: url(..../images/systemavailability/hotel-button-splash.png) no-repeat;
+    background: url(../images/systemavailability/hotel-button-splash.png) no-repeat;
 }
 
 div.hotel-image {
@@ -272,7 +272,7 @@ div.hotel-open-button-content, div.hotel-closed-button-content {
 }
 
 div.hotel-open-button-content a, div.hotel-closed-button-content div, div.register-button a {
-    background-image: url(..../images/systemavailability/hotel-button.png);
+    background-image: url(../images/systemavailability/hotel-button.png);
     background-position: -7px 0;
     text-align: center;
     overflow: hidden;
@@ -301,7 +301,7 @@ div.hotel-closed-button-content span.closed {
 }
 
 div.hotel-open-button-content span, div.hotel-closed-button-content span {
-    background-image: url(..../images/systemavailability/hotel-button.png);
+    background-image: url(../images/systemavailability/hotel-button.png);
     background-repeat:no-repeat;
     float:left;
     width: 7px;
@@ -309,14 +309,14 @@ div.hotel-open-button-content span, div.hotel-closed-button-content span {
 }
 
 div.hotel-open-image {
-    background: url(..../images/systemavailability/hotel-button-hotelopen.gif) no-repeat;
+    background: url(../images/systemavailability/hotel-button-hotelopen.gif) no-repeat;
     margin-left: 27px;
     width: 53px;
     height: 52px;
 }
 
 div.hotel-closed-image {
-    background: url(..../images/systemavailability/hotel-button-hotelclosed.png) no-repeat;
+    background: url(../images/systemavailability/hotel-button-hotelclosed.png) no-repeat;
     margin-left: 35px;
     width: 44px;
     height: 52px;
@@ -331,7 +331,7 @@ div.hotel-open-button-content:hover span.open {
 }
 
 div.register-button span {
-    background-image: url(..../images/systemavailability/hotel-button-ends.png);
+    background-image: url(../images/systemavailability/hotel-button-ends.png);
     background-repeat:no-repeat;
     float:left;
     width: 20px;

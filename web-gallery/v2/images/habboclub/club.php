@@ -2,22 +2,22 @@
 /*---------------------------------------------------+
 | HabboCMS - Habbo Content Management System
 +----------------------------------------------------+
-| Copyright © 2007 - Meth0d
+| Copyright ? 2007 - Meth0d
 | <meth0d@retroscripting.com>
 +----------------------------------------------------+
 | This product comes without any warrenty in any
 | kind, shape, way or format.
 +---------------------------------------------------*/
 
-include('core.php');
-include('includes/session.php');
+require_once(dirname(__FILE__) . '/core.php');
+require_once(dirname(__FILE__) . '/includes/session.php');
 
 $pagename = "Credits";
 $pageid = "7";
 $body_id = "home";
 
-include('templates/community/subheader.php');
-include('templates/community/header.php');
+require_once(dirname(__FILE__) . '/templates/community/subheader.php');
+require_once(dirname(__FILE__) . '/templates/community/header.php');
 
 // Old page ported from HabboCMS to HoloCMS, with some improvements and function changes.
 
@@ -224,6 +224,6 @@ Hurrah! A major discount on all ".$shortname." Club subscriptions! Buy one on th
 			 
 </div>";
 
-include('templates/community/footer.php');
+require_once(dirname(__FILE__) . '/templates/community/footer.php');
 
 ?>

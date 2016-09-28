@@ -1721,7 +1721,7 @@ input.invitation-input {
 }
 
 #purse-habblet li.icon-purse {
-	background-image: url(/images/purse/purse_icon.gif);
+	background-image: url(../../images/purse/purse_icon.gif);
     background-repeat: no-repeat;
     background-position: 22px 9px;
     padding: 10px 0 15px 60px;
