@@ -1,3 +1,3 @@
 RewriteEngine On 
-RewriteBase /HoloCMS/
-ErrorDocument 404 /HoloCMS/error.php
+RewriteBase /
+ErrorDocument 404 /error.php
