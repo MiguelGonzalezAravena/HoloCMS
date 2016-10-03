@@ -21,10 +21,10 @@ session_start();
 
 //	****** MASTER DATABASE SETTINGS ******
 //	These are the settings required to connect to your MySQL Database.
-$sqlhostname = 'localhost';
-$sqlusername = 'root';
-$sqlpassword = '';
-$sqldb = 'holov26';
+$sqlhostname = 'z37udk8g6jiaqcbx.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
+$sqlusername = 'ngi4v6jtse1swr17';
+$sqlpassword = 'uoao3754s2irptgz';
+$sqldb = 'm0wwy64nt6johmj1';
 $language = 'en';
 
 //	****** STATUS CHECKS SYSTEM ******
