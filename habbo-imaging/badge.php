@@ -8,7 +8,7 @@
 || # HoloCMS is provided "as is" and comes without
 || # warrenty of any kind. HoloCMS is free software!
 |+===================================================*/
-
+require_once(dirname(__FILE__) . '/../core.php');
 /** HOLO GROUP BADGE IMAGER
 * @author    Jaym/Kreechin
 * @desc         Dynamicly generate group badge images
@@ -31,20 +31,20 @@ function image_colorize(&$img, $rgb) {
 }
 
 header('Content-type: image/gif');
-$im = imagecreatefromgif('badges/base/base.gif');
-$badgedata = isset($_GET['badge']) ? FilterText($_GET['badge']) : '';
-
+$im = imagecreatefromgif(dirname(__FILE__) . '/badges/base/base.gif');
+$badgedata = isset($_GET['badge']) ? str_replace('.gif', '', FilterText($_GET['badge'])) : '';
+$backupBagde = $badgedata;
 (empty($badgedata)) ? exit : '';
 
 $letters = array('b', 'X');
 $badgedata = str_replace($letters, '', $badgedata);
-$layer = explode('s',$badgedata);
-$sourcefile_id = imageCreateFromgif('badges/base/base.gif');
+$layer = explode('s', $badgedata);
+$sourcefile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/base/base.gif');
 
 $str = $layer[0];
 $arr = str_split($str, 2);
 if(empty($layer[0])) {
-  $lay = 'badges/templates/none.gif';
+  $lay = dirname(__FILE__) . '/badges/templates/none.gif';
   $lay = imagecreatefromgif($lay);
   imagecopy($im, $lay, 0, 0, 0, 0, 0, 0);
 } else {
@@ -92,22 +92,22 @@ if(empty($layer[0])) {
   $hex2 = $colour[1];
   $hex3 = $colour[2];
 
-  $insertfile_id = imageCreateFromgif('badges/base/' . $arr[0] . '.gif');
+  $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/base/' . $arr[0] . '.gif');
   $sourcefile_width = imageSX($sourcefile_id);
   $insertfile_width = imageSX($insertfile_id);
   $sourcefile_height = imageSY($sourcefile_id);
   $insertfile_height = imageSY($insertfile_id);
   $p = ($sourcefile_width / 2) - ($insertfile_width / 2);
   $pp = ($sourcefile_height / 2) - ($insertfile_height / 2);
-  $image = getimagesize('badges/base/' . $arr[0] . '.gif');
+  $image = getimagesize(dirname(__FILE__) . '/badges/base/' . $arr[0] . '.gif');
   $h = $image[0];
   $w = $image[1];
   $color = array($hex1, $hex2, $hex3);
-  $lay = 'badges/base/' . $arr[0] . '.gif';
+  $lay = dirname(__FILE__) . '/badges/base/' . $arr[0] . '.gif';
   $img = imageCreateFromgif($lay);
   image_colorize($img, $color);
-  if(file_exists('badges/base/' . $arr[0] . '_' . $arr[0] . '.gif')) {
-    $olay = imagecreatefromgif('badges/base/' . $arr[0] . '_' . $arr[0] . '.gif');
+  if(file_exists(dirname(__FILE__) . '/badges/base/' . $arr[0] . '_' . $arr[0] . '.gif')) {
+    $olay = imagecreatefromgif(dirname(__FILE__) . '/badges/base/' . $arr[0] . '_' . $arr[0] . '.gif');
     imagecopymerge($img, $olay, 0, 0, 0, 0, $h, $w, 100);
     imagecopy($im, $img, $p, $pp, 0, 0, $h, $w);
   } else {
@@ -118,11 +118,11 @@ if(empty($layer[0])) {
 $str1 = $layer[1];
 $arr1 = str_split($str1, 2);
 if(empty($layer[1])) {
-  $lay1 = 'badges/templates/none.gif';
+  $lay1 = dirname(__FILE__) . '/badges/templates/none.gif';
   $lay1 = imagecreatefromgif($lay1);
   imagecopy($im, $lay1, 0, 0, 0, 0, 0, 0);
 } else {
-  $image = getimagesize('badges/templates/' . $arr1[0] . '.gif');
+  $image = getimagesize(dirname(__FILE__) . '/badges/templates/' . $arr1[0] . '.gif');
   $h = $image[0];
   $w = $image[1];
   $pos = $arr1[2];
@@ -131,25 +131,25 @@ if(empty($layer[1])) {
     $p = 0;
     $pp = 0;
   } elseif ($pos == 1) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr1[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr1[0] . '.gif');
     $sourcefile_width = imageSX($sourcefile_id);
     $insertfile_width = imageSX($insertfile_id);
     $p = (($sourcefile_width - $insertfile_width ) / 2);
     $pp = 0;
   } elseif ($pos == 2) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr1[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr1[0] . '.gif');
     $sourcefile_width = imageSX($sourcefile_id);
     $insertfile_width = imageSX($insertfile_id);
     $p = $sourcefile_width - $insertfile_width;
     $pp = 0;
   } elseif ($pos == 3) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr1[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr1[0] . '.gif');
     $sourcefile_height = imageSY($sourcefile_id);
     $insertfile_height = imageSY($insertfile_id);
     $p = 0;
     $pp = ($sourcefile_height / 2) - ($insertfile_height / 2);
   } elseif ($pos == 4) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr1[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr1[0] . '.gif');
     $sourcefile_width = imageSX($sourcefile_id);
     $insertfile_width = imageSX($insertfile_id);
     $sourcefile_height = imageSY($sourcefile_id);
@@ -157,7 +157,7 @@ if(empty($layer[1])) {
     $p = ($sourcefile_width / 2) - ($insertfile_width / 2);
     $pp = ($sourcefile_height / 2) - ($insertfile_height / 2);
   } elseif ($pos == 5) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr1[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr1[0] . '.gif');
     $sourcefile_width = imageSX($sourcefile_id);
     $insertfile_width = imageSX($insertfile_id);
     $sourcefile_height = imageSY($sourcefile_id);
@@ -165,13 +165,13 @@ if(empty($layer[1])) {
     $p = $sourcefile_width - $insertfile_width;
     $pp = ($sourcefile_height / 2) - ($insertfile_height / 2);
   } elseif ($pos == 6) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr1[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr1[0] . '.gif');
     $sourcefile_height = imageSY($sourcefile_id);
     $insertfile_height = imageSY($insertfile_id);
     $p = 0;
     $pp = $sourcefile_height - $insertfile_height;
   } elseif ($pos == 7) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr1[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr1[0] . '.gif');
     $sourcefile_width = imageSX($sourcefile_id);
     $insertfile_width = imageSX($insertfile_id);
     $sourcefile_height = imageSY($sourcefile_id);
@@ -179,7 +179,7 @@ if(empty($layer[1])) {
     $p = (($sourcefile_width - $insertfile_width ) / 2);
     $pp = $sourcefile_height - $insertfile_height;
   } elseif ($pos == 8) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr1[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr1[0] . '.gif');
     $sourcefile_width = imageSX($sourcefile_id);
     $insertfile_width = imageSX($insertfile_id);
     $sourcefile_height = imageSY($sourcefile_id);
@@ -233,11 +233,11 @@ if(empty($layer[1])) {
   $hex3 = $colour[2];
 
   $color = array($hex1, $hex2, $hex3);
-  $lay1 = 'badges/templates/' . $arr1[0] . '.gif';
+  $lay1 = dirname(__FILE__) . '/badges/templates/' . $arr1[0] . '.gif';
   $img = imageCreateFromgif($lay1);
   image_colorize($img, $color);
-  if(file_exists('badges/templates/' . $arr1[0] . '_' . $arr1[0] . '.gif')) {
-    $olay = imagecreatefromgif('badges/templates/' . $arr1[0] . '_' . $arr1[0] . '.gif');
+  if(file_exists(dirname(__FILE__) . '/badges/templates/' . $arr1[0] . '_' . $arr1[0] . '.gif')) {
+    $olay = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr1[0] . '_' . $arr1[0] . '.gif');
     imagecopymerge($img, $olay, 0, 0, 0, 0, $h, $w, 100);
     imagecopy($im, $img, $p, $pp, 0, 0, $h, $w);
   } else {
@@ -248,11 +248,11 @@ if(empty($layer[1])) {
 $str2 = $layer[2];
 $arr2 = str_split($str2, 2);
 if (empty($layer[2])) {
-  $lay2 = 'badges/templates/none.gif';
+  $lay2 = dirname(__FILE__) . '/badges/templates/none.gif';
   $lay2 = imagecreatefromgif($lay2);
   imagecopy($im, $lay2, 0, 0, 0, 0, 0, 0);
 } else {
-  $image = getimagesize('badges/templates/' . $arr2[0] . '.gif');
+  $image = getimagesize(dirname(__FILE__) . '/badges/templates/' . $arr2[0] . '.gif');
   $h = $image[0];
   $w = $image[1];
   $pos = $arr2[2];
@@ -260,25 +260,25 @@ if (empty($layer[2])) {
     $p = 0;
     $pp = 0;
   } elseif ($pos == 1) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr2[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr2[0] . '.gif');
     $sourcefile_width = imageSX($sourcefile_id);
     $insertfile_width = imageSX($insertfile_id);
     $p = (($sourcefile_width - $insertfile_width) / 2);
     $pp = 0;
   } elseif ($pos == 2) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr2[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr2[0] . '.gif');
     $sourcefile_width = imageSX($sourcefile_id);
     $insertfile_width = imageSX($insertfile_id);
     $p = $sourcefile_width - $insertfile_width;
     $pp = 0;
   } elseif ($pos == 3) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr2[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr2[0] . '.gif');
     $sourcefile_height = imageSY($sourcefile_id);
     $insertfile_height = imageSY($insertfile_id);
     $p = 0;
     $pp = ($sourcefile_height / 2) - ($insertfile_height / 2);
   } elseif ($pos == 4) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr2[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr2[0] . '.gif');
     $sourcefile_width = imageSX($sourcefile_id);
     $insertfile_width = imageSX($insertfile_id);
     $sourcefile_height = imageSY($sourcefile_id);
@@ -286,7 +286,7 @@ if (empty($layer[2])) {
     $p = ($sourcefile_width / 2) - ($insertfile_width / 2);
     $pp = ($sourcefile_height / 2) - ($insertfile_height / 2);
   } elseif ($pos == 5) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr2[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr2[0] . '.gif');
     $sourcefile_width = imageSX($sourcefile_id);
     $insertfile_width = imageSX($insertfile_id);
     $sourcefile_height = imageSY($sourcefile_id);
@@ -294,13 +294,13 @@ if (empty($layer[2])) {
     $p = $sourcefile_width - $insertfile_width;
     $pp = ($sourcefile_height / 2) - ($insertfile_height / 2);
   } elseif ($pos == 6) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr2[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr2[0] . '.gif');
     $sourcefile_height = imageSY($sourcefile_id);
     $insertfile_height = imageSY($insertfile_id);
     $p = 0;
     $pp = $sourcefile_height - $insertfile_height;
     } elseif ($pos == 7) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr2[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr2[0] . '.gif');
     $sourcefile_width = imageSX($sourcefile_id);
     $insertfile_width = imageSX($insertfile_id);
     $sourcefile_height = imageSY($sourcefile_id);
@@ -308,7 +308,7 @@ if (empty($layer[2])) {
     $p = (($sourcefile_width - $insertfile_width) / 2);
     $pp = $sourcefile_height - $insertfile_height;
   } elseif ($pos == 8) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr2[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr2[0] . '.gif');
     $sourcefile_width = imageSX($sourcefile_id);
     $insertfile_width = imageSX($insertfile_id);
     $sourcefile_height = imageSY($sourcefile_id);
@@ -362,26 +362,26 @@ if (empty($layer[2])) {
   $hex3 = $colour[2];
 
   $color = array($hex1, $hex2, $hex3);
-  $lay2 = 'badges/templates/' . $arr2[0] . '.gif';
+  $lay2 = dirname(__FILE__) . '/badges/templates/' . $arr2[0] . '.gif';
   $img = imageCreateFromgif($lay2);
   image_colorize($img, $color);
-  if(file_exists('badges/templates/' . $arr2[0] . '_' . $arr2[0] . '.gif')) {
-    $olay = imagecreatefromgif('badges/templates/' . $arr2[0] . '_' . $arr2[0] . '.gif');
+  if(file_exists(dirname(__FILE__) . '/badges/templates/' . $arr2[0] . '_' . $arr2[0] . '.gif')) {
+    $olay = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr2[0] . '_' . $arr2[0] . '.gif');
     imagecopymerge($img, $olay, 0, 0, 0, 0, $h, $w, 100);
     imagecopy($im, $img, $p, $pp, 0, 0, $h, $w);
   } else {
     imagecopy($im, $img, $p, $pp, 0, 0, $h, $w);
   }
 }
-
-$str3 = $layer[3];
+//print_r($layer);
+$str3 = $layer[2];
 $arr3 = str_split($str3, 2);
 if(empty($layer[3])) {
-  $lay3 = 'badges/templates/none.gif';
+  $lay3 = dirname(__FILE__) . '/badges/templates/none.gif';
   $lay3 = imagecreatefromgif($lay3);
   imagecopy($im, $lay3, 0, 0, 0, 0, 0, 0);
 } else {
-  $image = getimagesize('badges/templates/' . $arr3[0] . '.gif');
+  $image = getimagesize(dirname(__FILE__) . '/badges/templates/' . $arr3[0] . '.gif');
   $h = $image[0];
   $w = $image[1];
   $pos = $arr3[2];
@@ -389,25 +389,25 @@ if(empty($layer[3])) {
     $p = 0;
     $pp = 0;
   } elseif($pos == 1) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr3[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr3[0] . '.gif');
     $sourcefile_width = imageSX($sourcefile_id);
     $insertfile_width = imageSX($insertfile_id);
     $p = (($sourcefile_width - $insertfile_width) / 2);
     $pp = 0;
   } elseif($pos == 2) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr3[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr3[0] . '.gif');
     $sourcefile_width = imageSX($sourcefile_id);
     $insertfile_width = imageSX($insertfile_id);
     $p = $sourcefile_width - $insertfile_width;
     $pp = 0;
   } elseif($pos == 3) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr3[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr3[0] . '.gif');
     $sourcefile_height = imageSY($sourcefile_id);
     $insertfile_height = imageSY($insertfile_id);
     $p = 0;
     $pp = ($sourcefile_height / 2) - ($insertfile_height / 2);
   } elseif($pos == 4) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr3[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr3[0] . '.gif');
     $sourcefile_width = imageSX($sourcefile_id);
     $insertfile_width = imageSX($insertfile_id);
     $sourcefile_height = imageSY($sourcefile_id);
@@ -415,7 +415,7 @@ if(empty($layer[3])) {
     $p = ($sourcefile_width / 2) - ($insertfile_width / 2);
     $pp = ($sourcefile_height / 2) - ($insertfile_height / 2);
   } elseif($pos == 5) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr3[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr3[0] . '.gif');
     $sourcefile_width = imageSX($sourcefile_id);
     $insertfile_width = imageSX($insertfile_id);
     $sourcefile_height = imageSY($sourcefile_id);
@@ -423,13 +423,13 @@ if(empty($layer[3])) {
     $p = $sourcefile_width - $insertfile_width;
     $pp = ($sourcefile_height / 2) - ($insertfile_height / 2);
   } elseif($pos == 6) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr3[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr3[0] . '.gif');
     $sourcefile_height = imageSY($sourcefile_id);
     $insertfile_height = imageSY($insertfile_id);
     $p = 0;
     $pp = $sourcefile_height - $insertfile_height;
     } elseif($pos == 7) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr3[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr3[0] . '.gif');
     $sourcefile_width = imageSX($sourcefile_id);
     $insertfile_width = imageSX($insertfile_id);
     $sourcefile_height = imageSY($sourcefile_id);
@@ -437,7 +437,7 @@ if(empty($layer[3])) {
     $p = (($sourcefile_width - $insertfile_width) / 2);
     $pp = $sourcefile_height - $insertfile_height;
   } elseif($pos == 8) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr3[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr3[0] . '.gif');
     $sourcefile_width = imageSX($sourcefile_id);
     $insertfile_width = imageSX($insertfile_id);
     $sourcefile_height = imageSY($sourcefile_id);
@@ -491,26 +491,26 @@ if(empty($layer[3])) {
   $hex3 = $colour[2];
 
   $color = array($hex1, $hex2, $hex3);
-  $lay3 = 'badges/templates/' . $arr3[0] . '.gif';
+  $lay3 = dirname(__FILE__) . '/badges/templates/' . $arr3[0] . '.gif';
   $img = imageCreateFromgif($lay3);
   image_colorize($img, $color);
-  if(file_exists('badges/templates/' . $arr3[0] . '_' . $arr3[0] . '.gif')) {
-    $olay = imagecreatefromgif('badges/templates/' . $arr3[0] . '_' . $arr3[0] . '.gif');
+  if(file_exists(dirname(__FILE__) . '/badges/templates/' . $arr3[0] . '_' . $arr3[0] . '.gif')) {
+    $olay = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr3[0] . '_' . $arr3[0] . '.gif');
     imagecopymerge($img, $olay, 0, 0, 0, 0, $h, $w, 100);
     imagecopy($im, $img, $p, $pp, 0, 0, $h, $w);
   } else {
     imagecopy($im, $img, $p, $pp, 0, 0, $h, $w);
   }
 }
-    
-$str4 = $layer[4];
+//print_r($layer);
+$str4 = $layer[2];
 $arr4 = str_split($str4, 2);
 if(empty($layer[4])) {
-  $lay4 = 'badges/templates/none.gif';
+  $lay4 = dirname(__FILE__) . '/badges/templates/none.gif';
   $lay4 = imagecreatefromgif($lay4);
   imagecopy($im, $lay4, 0, 0, 0, 0, 0, 0);
 } else {
-  $image = getimagesize('badges/templates/' . $arr4[0] . '.gif');
+  $image = getimagesize(dirname(__FILE__) . '/badges/templates/' . $arr4[0] . '.gif');
   $h = $image[0];
   $w = $image[1];
   $pos = $arr4[2];
@@ -518,25 +518,25 @@ if(empty($layer[4])) {
     $p = 0;
     $pp = 0;
   } elseif($pos == 1) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr4[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr4[0] . '.gif');
     $sourcefile_width = imageSX($sourcefile_id);
     $insertfile_width = imageSX($insertfile_id);
     $p = (($sourcefile_width - $insertfile_width) / 2);
     $pp = 0;
   } elseif($pos == 2) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr4[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr4[0] . '.gif');
     $sourcefile_width = imageSX($sourcefile_id);
     $insertfile_width = imageSX($insertfile_id);
     $p = $sourcefile_width - $insertfile_width;
     $pp = 0;
   } elseif($pos == 3) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr4[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr4[0] . '.gif');
     $sourcefile_height = imageSY($sourcefile_id);
     $insertfile_height = imageSY($insertfile_id);
     $p = 0;
     $pp = ($sourcefile_height / 2) - ($insertfile_height / 2);
   } elseif($pos == 4) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr4[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr4[0] . '.gif');
     $sourcefile_width = imageSX($sourcefile_id);
     $insertfile_width = imageSX($insertfile_id);
     $sourcefile_height = imageSY($sourcefile_id);
@@ -544,7 +544,7 @@ if(empty($layer[4])) {
     $p = ($sourcefile_width / 2) - ($insertfile_width / 2);
     $pp = ($sourcefile_height / 2) - ($insertfile_height / 2);
   } elseif($pos == 5) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr4[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr4[0] . '.gif');
     $sourcefile_width = imageSX($sourcefile_id);
     $insertfile_width = imageSX($insertfile_id);
     $sourcefile_height = imageSY($sourcefile_id);
@@ -552,13 +552,13 @@ if(empty($layer[4])) {
     $p = $sourcefile_width - $insertfile_width;
     $pp = ($sourcefile_height / 2) - ($insertfile_height / 2);
   } elseif($pos == 6) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr4[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr4[0] . '.gif');
     $sourcefile_height = imageSY($sourcefile_id);
     $insertfile_height = imageSY($insertfile_id);
     $p = 0;
     $pp = $sourcefile_height - $insertfile_height;
     } elseif($pos == 7) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr4[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr4[0] . '.gif');
     $sourcefile_width = imageSX($sourcefile_id);
     $insertfile_width = imageSX($insertfile_id);
     $sourcefile_height = imageSY($sourcefile_id);
@@ -566,7 +566,7 @@ if(empty($layer[4])) {
     $p = (($sourcefile_width - $insertfile_width) / 2);
     $pp = $sourcefile_height - $insertfile_height;
   } elseif($pos == 8) {
-    $insertfile_id = imageCreateFromgif('badges/templates/' . $arr4[0] . '.gif');
+    $insertfile_id = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr4[0] . '.gif');
     $sourcefile_width = imageSX($sourcefile_id);
     $insertfile_width = imageSX($insertfile_id);
     $sourcefile_height = imageSY($sourcefile_id);
@@ -619,11 +619,11 @@ if(empty($layer[4])) {
   $hex3 = $colour[2];
 
   $color = array($hex1, $hex2, $hex3);
-  $lay4 = 'badges/templates/' . $arr4[0] . '.gif';
+  $lay4 = dirname(__FILE__) . '/badges/templates/' . $arr4[0] . '.gif';
   $img = imageCreateFromgif($lay4);
   image_colorize($img, $color);
-  if(file_exists('badges/templates/' . $arr4[0] . '_' . $arr4[0] . '.gif')) {
-    $olay = imagecreatefromgif('badges/templates/' . $arr4[0] . '_' . $arr4[0] . '.gif');
+  if(file_exists(dirname(__FILE__) . '/badges/templates/' . $arr4[0] . '_' . $arr4[0] . '.gif')) {
+    $olay = imagecreatefromgif(dirname(__FILE__) . '/badges/templates/' . $arr4[0] . '_' . $arr4[0] . '.gif');
     imagecopymerge($img, $olay, 0, 0, 0, 0, $h, $w, 100);
     imagecopy($im, $img, $p, $pp, 0, 0, $h, $w);
   } else {
@@ -633,10 +633,10 @@ if(empty($layer[4])) {
 
 imagegif($im);
 
-if(file_exists('badge-fill/' . $badgedata . '.gif')) {
+if(file_exists(dirname(__FILE__) . '/badge-fill/' . $backupBagde . '.gif')) {
   imagedestroy($im);
 } else {
-  imagegif($im , 'badge-fill/' . $badgedata . '.gif');
+  imagegif($im, dirname(__FILE__) . '/badge-fill/' . $backupBagde . '.gif');
   imagedestroy($im);
 }
 ?> 
