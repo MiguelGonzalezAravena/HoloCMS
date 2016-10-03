@@ -102,11 +102,11 @@ $body_id = isset($body_id) ? $body_id : 'home';
       </script>
       <?php } ?>
         <ul id="navi">
-          <?php if($pageid > 0 && $pageid < 4 || $pageid == 'myprofile' && $logged_in == true) { ?>
+          <?php if($pageid > 0 && $pageid < 4 || $pageid == 'myprofile' && $logged_in) { ?>
           <li class="selected"><strong><?php echo $name; ?></strong><span></span></li>
-          <?php } elseif($logged_in == true) { ?>
+          <?php } elseif($logged_in) { ?>
           <li class=""><a href="<?php echo $path; ?>index.php"><?php echo $name; ?></a><span></span></li>
-          <?php } elseif($logged_in != true) { ?>
+          <?php } elseif(!$logged_in) { ?>
           <li id="tab-register-now"><a href="<?php echo $path; ?>register.php" target="_self">Register now!</a><span></span></li>
           <?php
             }
