@@ -35,7 +35,7 @@ $enable_status_image = 1;
 
 //	****** SITE PATH ******
 //	The full URL to your site; with an slash added on the end.
-$path = 'http://127.0.0.1/HoloCMS/';
+$path = 'http://holocms.herokuapp.com/';
 
 //	****** REFFERAL REWARD ******
 //	The amount of credits a user recieves upon referring a friend to the
