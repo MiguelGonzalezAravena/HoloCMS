@@ -47,11 +47,11 @@ if($valid > 0) {
   swfobj.addParam('base', '<?php echo $web_gallery; ?>flash/');
   swfobj.addParam('bgcolor', '#FFFFFF');
   swfobj.addVariable('post_url', '<?php echo $path; ?>save_group_badge.php');
-  swfobj.addVariable('__app_key', 'Meth0d.org');
+  swfobj.addVariable('__app_key', 'HoloCMS');
   swfobj.addVariable('groupId', '<?php echo $groupid; ?>');
   swfobj.addVariable('badge_data', '<?php echo $groupdata['badge']; ?>');
-  swfobj.addVariable('localization_url', 'http://www.habbo.co.uk/xml/badge_editor');
-  swfobj.addVariable('xml_url', 'http://www.habbo.co.uk/figure/badge_data_xml');
+  swfobj.addVariable('localization_url', '<?php echo $path; ?>xml/badge_editor.xml');
+  swfobj.addVariable('xml_url', '<?php echo $path; ?>xml/badge_data_xml.xml');
   swfobj.addParam('allowScriptAccess', 'always');
   swfobj.write('badge-editor-flash');
 </script>

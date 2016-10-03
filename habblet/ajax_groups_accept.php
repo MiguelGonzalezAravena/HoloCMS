@@ -16,7 +16,7 @@ $pos = strrpos($refer, 'group_profile.php');
 ($pos == false) ? exit : '';
 
 $groupid = isset($_POST['groupId']) ? (int) $_POST['groupId'] : 0;
-$targets = isset($_POST['targets']) ? FilterText($_POST['targets']) : '';
+$targets = isset($_POST['targetIds']) ? FilterText($_POST['targetIds']) : '';
 $targets = explode(',', $targets);
 
 (empty($groupid)) ? exit : '';

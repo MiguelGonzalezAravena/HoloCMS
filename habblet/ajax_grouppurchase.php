@@ -13,9 +13,10 @@ require_once(dirname(__FILE__) . '/../includes/session.php');
 (!function_exists('SendMUSData') ? require_once(dirname(__FILE__) . '/../includes/mus.php') : '');
 
 $group_name = isset($_POST['name']) ? FilterText($_POST['name']) : '';
-$group_desc = isset($_POST['group_desc']) ? FilterText($_POST['group_desc']) : '';
+$group_desc = isset($_POST['description']) ? FilterText($_POST['description']) : '';
+$do = isset($_GET['do']) ? FilterText($_GET['do']) : '';
 
-if(!isset($_SESSION['username'])) {
+if(!$logged_in) {
 ?>
   <p>Please log in first.</p>
   <p>
@@ -39,7 +40,7 @@ if(!isset($_SESSION['username'])) {
   <div class="clear"></div>
 <?php
     exit;
-  } elseif($myrow['credits'] < 20) {
+  } else if($myrow['credits'] < 20) {
 ?>
   <p id="purchase-result-error">Purchasing the group failed. Please try again later.</p>
   <div id="purchase-group-errors">
@@ -90,7 +91,7 @@ if(!isset($_SESSION['username'])) {
   </p>
 <?php
     exit;
-  } elseif($do == 'purchase_confirmation') {
+  } else if($do == 'purchase_confirmation') {
     if(empty($group_name) || empty($group_desc)) {
 ?>
   <p>Please fill in all fields!</p>
@@ -108,7 +109,7 @@ if(!isset($_SESSION['username'])) {
   </p>
 <?php
         exit;
-      } elseif(strlen($group_desc > 200) && !is_numeric($group_desc)) {
+      } else if(strlen($group_desc > 200) && !is_numeric($group_desc)) {
 ?>
   <p>The group description you have entered is too long.</p>
   <p>
@@ -138,8 +139,8 @@ if(!isset($_SESSION['username'])) {
 ?>
   <p>
     <b>Group Purchased</b><br /><br />
-    <img src="<?php echo $path; ?>habbo-imaging/badge-fill/b0503Xs09114s05013s05015.gif" border="0" align="left /">
-    Congratulations! You are now the proud owner of <b><?php HoloText($group_name); ?></b>.<br /><br />
+    <img src="<?php echo $path; ?>habbo-imaging/badge-fill/b0503Xs09114s05013s05015.gif" border="0" align="left" />
+    Congratulations! You are now the proud owner of <b><?php echo HoloText($group_name); ?></b>.<br /><br />
     Click <a href="<?php echo $path; ?>group_profile.php?id=<?php echo $group_id; ?>">here</a> to go to your group home right away, or use the button below to close this window.
   </p>
   <p>

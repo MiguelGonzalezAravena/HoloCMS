@@ -21,6 +21,8 @@ $page = isset($_POST['pageNumber']) ? (int) $_POST['pageNumber'] : 0;
 $searchString = isset($_POST['searchString']) ? FilterText($_POST['searchString']) : '';
 $pending = isset($_POST['pending']) ? FilterText($_POST['pending']) : '';
 $pending = ($pending == 'true' ? true : false);
+$rights = 0;
+$lefts = 0;
 (empty($groupid)) ? exit : '';
 
 $check = mysqli_query($connection, "SELECT member_rank FROM groups_memberships WHERE userid = '{$my_id}' AND groupid = '{$groupid}' AND member_rank > 1 AND is_pending = '0' LIMIT 1") or die(mysqli_error($connection));
