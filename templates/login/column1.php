@@ -37,15 +37,15 @@ if(getContent('enable-flash-promo') == 1) {
           swfobj.addParam('AllowScriptAccess', 'always');
           swfobj.addParam('wmode', 'transparent');
           swfobj.addVariable('base_url', '<?php echo $web_gallery; ?>flash/intro');
-          swfobj.addVariable('habbos_url', '<?php echo $path; ?>/xml/promo_habbos.php');
+          swfobj.addVariable('habbos_url', '<?php echo $path; ?>xml/promo_habbos.php');
           swfobj.addVariable('create_button_text', '<?php echo $locale['register_today']; ?>');
           swfobj.addVariable('in_hotel_text', 'Online now!');
           swfobj.addVariable('slogan', '<?php echo $locale['slogan']; ?>');
           swfobj.addVariable('video_start', '<?php echo $locale['play']; ?>');
           swfobj.addVariable('video_stop', '<?php echo $locale['stop']; ?>');
           swfobj.addVariable('button_link', 'register.php');
-          swfobj.addVariable('localization_url', '<?php echo $path; ?>/xml/landing_intro.xml');
-          swfobj.addVariable('video_link', '<?php echo $path; ?>/web-gallery/flash/intro/Habbo_intro.swf');
+          swfobj.addVariable('localization_url', '<?php echo $path; ?>xml/landing_intro.xml');
+          swfobj.addVariable('video_link', '<?php echo $web_gallery; ?>flash/intro/Habbo_intro.swf');
           swfobj.write('create-habbo-flash');
           HabboView.add(function() {
             if (deconcept.SWFObjectUtil.getPlayerVersion()['major'] >= 8) {
@@ -70,8 +70,12 @@ if(getContent('enable-flash-promo') == 1) {
               <div class="habblet-container " id="create-habbo">
                 <div id="create-habbo">
                   <div id="create-habbo-nonflash">
-                    <div id="landing-register-text"><a href="register.php"><span>Join now, it's free >></span></a></div>
-                    <div id="landing-promotional-text"><span><?php echo $shortname; ?> is a virtual world where you can meet and make friends.</span></div>
+                    <div id="landing-register-text">
+                      <a href="<?php echo $path; ?>register.php"><span>Join now, it's free >></span></a>
+                    </div>
+                    <div id="landing-promotional-text">
+                      <span><?php echo $shortname; ?> is a virtual world where you can meet and make friends.</span>
+                    </div>
                   </div>
                 </div>
                 <?php } ?>
