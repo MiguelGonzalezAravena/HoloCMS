@@ -90,13 +90,13 @@
     });
 
     HabboView.add(function() {
-      var swfobj = new SWFObject('<?php echo $path; ?>flash/HabboRegistration.swf', 'habboreg', '435', '400', '8');
-      swfobj.addParam('base', '<?php echo $path; ?>flash/');
+      var swfobj = new SWFObject('<?php echo $web_gallery; ?>flash/HabboRegistration.swf', 'habboreg', '435', '400', '8');
+      swfobj.addParam('base', '<?php echo $web_gallery; ?>flash/');
       swfobj.addParam('wmode', 'opaque');
       swfobj.addParam('AllowScriptAccess', 'always');
-      swfobj.addVariable('figuredata_url', '<?php echo $path; ?>flash/figuredata.xml');
-      swfobj.addVariable('draworder_url', '<?php echo $path; ?>flash/draworder.xml');
-      swfobj.addVariable('localization_url', '<?php echo $path; ?>flash/figure_editor.xml');
+      swfobj.addVariable('figuredata_url', '<?php echo $path; ?>xml/figuredata.xml');
+      swfobj.addVariable('draworder_url', '<?php echo $path; ?>xml/draworder.xml');
+      swfobj.addVariable('localization_url', '<?php echo $path; ?>xml/figure_editor.xml');
       swfobj.addVariable('habbos_url', '<?php echo $path; ?>xml/promo_habbos.php');
       swfobj.addVariable('figure', '<?php echo $first_figure; ?>');
       swfobj.addVariable('gender', '<?php echo $first_gender; ?>');
