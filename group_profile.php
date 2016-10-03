@@ -15,6 +15,8 @@ require_once(dirname(__FILE__) . '/includes/session.php');
 
 $edit_mode = false;
 $found_profile = false;
+$is_member = false;
+$member_rank = 0;
 $searchString = isset($_POST['searchString']) ? FilterText($_POST['searchString']) : '';
 $groupid = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 $page = isset($_GET['page']) ? (int) $_GET['page'] : 0;
@@ -82,7 +84,7 @@ if(!$error) {
 
 $pageid = 'profile';
 
-if($groupdata['type'] != 1 && $is_member != true) {
+if(isset($groupdata) && $groupdata['type'] != 1 && !$is_member) {
   // If the group type is NOT exclusive/moderated, we have to delete any pending requests
   // this user has, simply because there's no longer need to put the user in the waiting list.
   $remove_pending = mysqli_query($connection, "DELETE FROM groups_memberships WHERE is_pending = '1' AND userid = '{$my_id}' AND groupid = '{$groupid}' LIMIT 1") or die(mysqli_error($connection));
@@ -90,14 +92,14 @@ if($groupdata['type'] != 1 && $is_member != true) {
 
 $viewtools = '<div class="myhabbo-view-tools">';
 
-if($logged_in && !$is_member && $groupdata['type'] != 2 && $my_membership['is_pending'] != 1) {
+if($logged_in && !$is_member && $groupdata['type'] != 2 && (isset($my_membership['is_pending']) && $my_membership['is_pending'] != 1) || !$is_member) {
   $viewtools .= '<a href="' . $path . 'joingroup.php?groupId=' . $groupid . '" id="join-group-button">';
   $viewtools .= ($groupdata['type'] == 0 || $groupdata['type'] == 3) ? 'Join' : 'Request membership';
   $viewtools .= '</a>';
 }
 
-$viewtools .= ($logged_in && $my_membership['is_current'] != 1 && $is_member) ? '<a href="#" id="select-favorite-button">Make favourite</a>' : '';
-$viewtools .= ($logged_in && $my_membership['is_current'] == 1 && $is_member) ? '<a href="#" id="deselect-favorite-button">Remove favourite</a>' : '';
+$viewtools .= (isset($my_membership) && $logged_in && $my_membership['is_current'] != 1 && $is_member) ? '<a href="#" id="select-favorite-button">Make favourite</a>' : '';
+$viewtools .= (isset($my_membership) && $logged_in && $my_membership['is_current'] == 1 && $is_member) ? '<a href="#" id="deselect-favorite-button">Remove favourite</a>' : '';
 $viewtools .= ($logged_in && $is_member && $my_id != $ownerid) ? '<a href="' . $path . 'leavegroup.php?groupId=' . $groupid . '" id="leave-group-button">Leave group</a>' : '';
 $viewtools .= '</div>';
 
@@ -174,8 +176,8 @@ if(!$error) {
                         $type = 'ignore';
                         break;
                     }
+                    $edit = ($edit_mode ? '<img src="' . $web_gallery . 'images/myhabbo/icon_edit.gif" width="19" height="18" class="edit-button" id="' . $type . '-' . $row['id'] . '-edit" /><script language="JavaScript" type="text/javascript">Event.observe(\'' . $type . '-' . $row['id'] . '-edit\', \'click\', function(e) { openEditMenu(e, ' . $row['id'] . ', \'' . $type . '\', \'' . $type . '-' . $row['id'] . '-edit\'); }, false);</script>' : ' ');
                     if($type == 'stickie') {
-                      $edit = ($edit_mode ? '<img src="' . $web_gallery . 'images/myhabbo/icon_edit.gif" width="19" height="18" class="edit-button" id="' . $type . '-' . $row['id'] . '-edit" /><script language="JavaScript" type="text/javascript">Event.observe(\'' . $type . '-' . $row['id'] . '-edit\', \'click\', function(e) { openEditMenu(e, ' . $row['id'] . ', \'' . $type . '\', \'' . $type . '-' . $row['id'] . '-edit\'); }, false);</script>' : ' ');
                 ?>
                 <div class="movable stickie n_skin_<?php echo $row['skin']; ?>-c" style=" left: <?php echo $row['x']; ?>px; top: <?php echo $row['y']; ?>px; z-index: <?php echo $row['z']; ?>" id="stickie-<?php echo $row['id']; ?>">
                   <div class="n_skin_<?php echo $row['skin']; ?>">
@@ -230,7 +232,7 @@ if(!$error) {
                     <div class="widget-body">
                       <div class="widget-content">
                         <div class="group-info-icon">
-                          <img src="<?php echo $path; ?>habbo-imaging/<?php echo (!empty($x) ? 'badge-fill/' . $groupdata['badge'] . '.gif' : 'badge.php?badge=' . $groupdata['badge']); ?> . '" />
+                          <img src="<?php echo $path; ?>habbo-imaging/<?php echo (file_exists(dirname(__FILE__) . '/habbo-imaging/badge-fill/' . $groupdata['badge'] . '.gif') ? 'badge-fill/' . $groupdata['badge'] : 'badge.php?badge=' . $groupdata['badge']); ?>.gif" alt="<?php echo HoloText($groupdata['name']); ?>" title="<?php echo HoloText($groupdata['name']); ?>" />
                         </div>
                         <h4>
                           <?php echo HoloText($groupdata['name']); ?>
@@ -465,7 +467,7 @@ if(!$error) {
                   if(!$found_profile) {
                     mysqli_query($connection, "INSERT INTO cms_homes_stickers(userid, groupid, type, subtype, x, y, z, skin) VALUES('-1', '{$groupid}', '2', '1', '25', '25', '5', 'defaultskin')") or die(mysqli_error($connection));
                 ?>
-                <div class="movable widget GroupInfoWidget" id="widget-".$row['id']."" style=" left: 25px; top: 25px; z-index: 5;">
+                <div class="movable widget GroupInfoWidget" id="widget-<?php echo $row['id']; ?>" style=" left: 25px; top: 25px; z-index: 5;">
                   <div class="w_skin_defaultskin">
                     <div class="widget-corner" id="widget-1994412-handle">
                       <div class="widget-headline">
@@ -479,7 +481,7 @@ if(!$error) {
                     <div class="widget-body">
                       <div class="widget-content">
                         <div class="group-info-icon">
-                          <img src="<?php echo $path; ?>habbo-imaging/badge-fill/<?php echo $groupdata['badge']; ?>.gif" />
+                          <img src="<?php echo $path; ?>habbo-imaging/<?php echo (file_exists(dirname(__FILE__) . '/habbo-imaging/badge-fill/' . $groupdata['badge'] . '.gif') ? 'badge-fill/' . $groupdata['badge'] : 'badge.php?badge=' . $groupdata['badge']); ?>.gif" alt="<?php echo HoloText($groupdata['name']); ?>" title="<?php echo HoloText($groupdata['name']); ?>" />
                         </div>
                         <h4>
                           <?php echo HoloText($groupdata['name']); ?>

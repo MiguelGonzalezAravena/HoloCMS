@@ -384,7 +384,7 @@ $hc_member = IsHCMember($my_id);
               <br />
               <div>&nbsp;</div>
               <div id="settings-editor">
-                You need to have a Flash player installed on your computer before being able to edit your Habbo character. You can download the player from here: <a target="_blank" href="http://www.adobe.com/go/getflashplayer">http://www.adobe.com/go/getflashplayer</a>
+                You need to have a Flash player installed on your computer before being able to edit your <?php echo $shortname; ?> character. You can download the player from here: <a target="_blank" href="http://www.adobe.com/go/getflashplayer">http://www.adobe.com/go/getflashplayer</a>
               </div>
               <?php if($hc_member) { ?>
               <div id="settings-wardrobe" style="display: none">
@@ -452,12 +452,12 @@ $hc_member = IsHCMember($my_id);
               <div id="settings-hc" style="display: none">
                 <div class="rounded rounded-hcred clearfix">
                   <a href="<?php echo $path; ?>club.php" id="settings-hc-logo"></a>
-                  Items marked with the Habbo Club symbol <img src="<?php echo $web_gallery; ?>v2/images/habboclub/hc_mini.png" /> are available only to Habbo Club members. <a href="<?php echo $path; ?>club.php">Join now!</a>
+                  Items marked with the <?php echo $shortname; ?> Club symbol <img src="<?php echo $web_gallery; ?>v2/images/habboclub/hc_mini.png" /> are available only to <?php echo $shortname; ?> Club members. <a href="<?php echo $path; ?>club.php">Join now!</a>
                 </div>
               </div>
               <div id="settings-oldfigure" style="display: none">
                 <div class="rounded rounded-lightbrown clearfix">
-                  Your Habbo had clothes or colors that are not selectable anymore. Please save your new looks here.
+                  Your <?php echo $shortname; ?> had clothes or colors that are not selectable anymore. Please save your new looks here.
                 </div>
               </div>
               <form method="post" action="<?php echo $path; ?>account.php?tab=1" id="settings-form" style="display: none">

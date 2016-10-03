@@ -9,7 +9,7 @@
 || # warrenty of any kind. HoloCMS is free software!
 |+===================================================*/
 $allow_guests = true;
-
+$cored = (isset($cored)) ? $cored : false;
 if($cored != true) {
   require_once(dirname(__FILE__) . '/core.php');
   require_once(dirname(__FILE__) . '/includes/session.php');

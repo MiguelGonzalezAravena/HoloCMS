@@ -890,17 +890,15 @@ $wide_enabled = (getContent('client-widescreen') == 1) ? true : false;
                     $check = mysqli_query($connection, "SELECT * FROM groups_details WHERE id = '{$group_id}' LIMIT 1");
                     $groupdata = mysqli_fetch_assoc($check);
                 ?>
-                <li class="<?php echo $oddevenM ?> <?php echo $pos; ?>" style="background-image: url(<?php echo $path; ?>habbo-imaging/badge.php?badge=<?php echo $groupdata['badge']; ?>)">
+                <li class="<?php echo $oddeven; ?> <?php echo $pos; ?>" style="background-image: url(<?php echo $path; ?>habbo-imaging/badge.php?badge=<?php echo $groupdata['badge']; ?>)">
                   <a class="item" href="<?php echo $path; ?>group_profile.php?id=<?php echo $group_id; ?>"><?php echo HoloText($groupdata['name']); ?></a>
                 </li>
                 <?php
                   }
 
                   $rights_should_be = $lefts;
-                  if($rights !== $rights_should_be) {
+                  echo ($rights != $rights_should_be ? '<li class="' . $oddeven . ' right"><div class="item">&nbsp;</div></li>' : '');
                 ?>
-                <li class="<?php echo $oddeven; ?> right"><div class="item">&nbsp;</div></li>
-                <?php } ?>
               </ul>
               <div class="habblet-button-row clearfix"><a class="new-button" id="purchase-group-button" href="#"><b>Create/buy a Group</b><i></i></a></div>
             </div>

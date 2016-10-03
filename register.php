@@ -364,7 +364,6 @@ if(isset($_POST['bean_avatarName']) || isset($_SESSION['bean_avatarName'])) {
     $_SESSION['password'] = $password;
 
     header('Location: ' . $location);
-    exit; // cut off the script
     // And we're done!
   }
 

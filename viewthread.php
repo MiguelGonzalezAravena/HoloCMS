@@ -19,6 +19,7 @@ require_once(dirname(__FILE__) . '/includes/session.php');
 $pageid = 'forum';
 $body_id = 'viewmode';
 $groupid = 0;
+$member_rank = 0;
 $threadid = isset($_GET['thread']) ? (int) $_GET['thread'] : 0;
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 $sp = isset($_GET['sp']) ? FilterText($_GET['sp']) : '';
@@ -206,7 +207,7 @@ require_once(dirname(__FILE__) . '/templates/community/header.php');
                           $userid = $userdata['id'];
                       ?>
                       <tr class="post-list-index-<?php echo $oddeven; ?>">
-                        <a id="post-<?php echo $row['id']; ?>">
+                        <a id="post-<?php echo $row['id']; ?>"></a>
                         <td class="post-list-row-container">
                           <a href="<?php echo $path; ?>user_profile.php?name=<?php echo $userdata['name']; ?>" class="post-list-creator-link post-list-creator-info"><?php echo $userdata['name']; ?></a><br />
                           &nbsp;

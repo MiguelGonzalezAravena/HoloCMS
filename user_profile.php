@@ -9,26 +9,25 @@
 || # warrenty of any kind. HoloCMS is free software!
 |+===================================================*/
 $allow_guests = true;
-$found_profile = false;
 
 require_once(dirname(__FILE__) . '/core.php');
 require_once(dirname(__FILE__) . '/includes/session.php');
 
-$edit_mode = false;
 $id = (isset($_GET['id']) ? (int) $_GET['id'] : (isset($_POST['id']) ? (int) $_POST['id'] : 0));
 $tag = (isset($_GET['tag']) ? FilterText($_GET['tag']) : (isset($_GET['tagid']) ? FilterText($_GET['tagid']) : ''));
-$name = (isset($_GET['name']) ? FilterText($_GET['name']) : (isset($_POST['name']) ? FilterText($_POST['name']) : ''));
+$username = (isset($_GET['name']) ? FilterText($_GET['name']) : (isset($_POST['name']) ? FilterText($_POST['name']) : ''));
 $do = isset($_GET['do']) ? FilterText($_GET['do']) : '';
 $edit_mode = false;
+$found_profile = false;
 $edit = '';
 $searchname = '';
 $guestbook_status = 'private';
 
-if(!empty($tag) || !empty($name) || !empty($id)) {
+if(!empty($tag) || !empty($username) || !empty($id)) {
   if(!empty($tag)) {
     $searchname = $tag;
-  } else if(!empty($name)) {
-    $searchname = $name;
+  } else if(!empty($username)) {
+    $searchname = $username;
   } else if(!empty($id)) {
     $request = mysqli_query($connection, "SELECT name FROM users WHERE id = {$id}");
     $rows = mysqli_num_rows($request);
@@ -94,7 +93,7 @@ if(!empty($tag) || !empty($name) || !empty($id)) {
 }
 
 if($do == 'edit' && $logged_in) {
-  if($user_row['name'] == $name) {
+  if($user_row['name'] == $username) {
     $edit_mode = true;
     mysqli_query($connection, "UPDATE cms_homes_group_linker SET active = '0' WHERE userid = '{$my_id}' LIMIT 1") or die(mysqli_error($connection));
   } else {
@@ -135,12 +134,12 @@ if(!$error && !IsUserBanned($user_row['id'])) {
   <div id="content" style="position: relative" class="clearfix">
     <div id="mypage-wrapper" class="cbb blue">
       <div class="box-tabs-container box-tabs-left clearfix">
-        <?php echo ($user_row['name'] == $name && !$edit_mode ? '<a href="' . $path . 'user_profile.php?do=edit&name=' . $name . '" id="edit-button" class="new-button dark-button edit-icon" style="float:left"><b><span></span>Modify</b><i></i></a>' : ''); ?>
+        <?php echo ($user_row['name'] == $username && $edit_mode ? '<a href="' . $path . 'user_profile.php?do=edit&name=' . $username . '" id="edit-button" class="new-button dark-button edit-icon" style="float:left"><b><span></span>Modify</b><i></i></a>' : ''); ?>
         <h2 class="page-owner"><?php echo $user_row['name']; ?></h2>
         <ul class="box-tabs"></ul>
       </div>
       <div id="mypage-content">
-        <?php if($edit_mode == true) { ?>
+        <?php if($edit_mode) { ?>
         <div id="top-toolbar" class="clearfix">
           <ul>
             <li><a href="#" id="inventory-button">Inventory</a></li>

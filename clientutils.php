@@ -93,7 +93,7 @@ if($key == 'cacheCheck' || $key == 'cache') {
 </body>
 </html>
 <?php
-} else if($key == 'LogInPlease' && $logged_in) {
+} else if($key == 'LogInPlease' && !$logged_in) {
   require_once(dirname(__FILE__) . '/templates/client/subheader.php');
 ?>
 <body id="popup" class="process-template client_error">

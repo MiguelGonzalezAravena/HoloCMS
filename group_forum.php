@@ -18,6 +18,7 @@ $pagename = 'Discussion Board';
 $pageid = 'forum';
 $body_id = 'viewmode';
 $edit_mode = false;
+$member_rank = 0;
 $searchString = isset($_POST['searchString']) ? FilterText($_POST['searchString']) : '';
 $groupid = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 $page = isset($_GET['page']) ? (int) $_GET['page'] : 0;
@@ -71,7 +72,7 @@ if($error != true) {
       <div id="content" style="position: relative" class="clearfix">
         <div id="mypage-wrapper" class="cbb blue">
           <div class="box-tabs-container box-tabs-left clearfix">
-            <?php echo ($member_rank > 1 && $edit_mode ? '<a href="' . $path . 'group_profile.php?id=' . $groupid . '&do=edit" class="new-button dark-button edit-icon" style="float:left"><b><span></span>Edit</b><i></i></a>' : '') { ?>
+            <?php echo ($member_rank > 1 && $edit_mode ? '<a href="' . $path . 'group_profile.php?id=' . $groupid . '&do=edit" class="new-button dark-button edit-icon" style="float:left"><b><span></span>Edit</b><i></i></a>' : ''); ?>
             <h2 class="page-owner">
               <?php echo HoloText($groupdata['name']); ?>&nbsp;
               <?php echo ($groupdata['type'] == 2 ? '<img src="' . $web-gallery . '/images/status_closed_big.gif" alt="Closed Group" title="Closed Group" />' : ''); ?>
@@ -328,7 +329,7 @@ if($error != true) {
                               if($row['topics'] == 0) {
                             ?>
                             <input type="hidden" id="email-verfication-ok" value="1" />
-                            <?php echo ($logged_in ? '<a href="#" id="newtopic-upper" class="new-button verify-email newtopic-icon" style="float:left"><b><span></span>New Thread</b><i></i></a>' : 'You must be logged in to reply or post new threads.' : ''); ?>
+                            <?php echo ($logged_in ? '<a href="#" id="newtopic-upper" class="new-button verify-email newtopic-icon" style="float:left"><b><span></span>New Thread</b><i></i></a>' : 'You must be logged in to reply or post new threads.'); ?>
                             <?php
                               } else if($row['topics'] == 1) {
                                 $check = mysqli_query($connection, "SELECT * FROM groups_memberships WHERE userid = '{$my_id}' AND groupid = '{$groupid}' LIMIT 1");
