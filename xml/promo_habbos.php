@@ -9,9 +9,10 @@
 || # warrenty of any kind. HoloCMS is free software!
 |+===================================================*/
 require_once(dirname(__FILE__) . '/../core.php');
+
 // This file will not generate a valid XML document, although we're getting close.
+echo '<?xml version="1.0" encoding="UTF-8"?>';
 ?>
-<?xml version="1.0" encoding="UTF-8"?>
 <habbos>
 <?php
   $sqll = mysqli_query($connection, "SELECT id, name, mission, figure FROM users ORDER BY online DESC LIMIT 10") or die(mysqli_error($connection));
