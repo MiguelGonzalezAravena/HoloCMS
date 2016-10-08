@@ -10,7 +10,7 @@
 |+===================================================*/
 require_once(dirname(__FILE__) . '/../core.php')
 
-if(isset($_SESSION['username'])) {
+if($logged_in) {
   $username = $_SESSION['username'];
   $password = $_SESSION['password'];
 
