@@ -75,8 +75,8 @@ if($error != true) {
             <?php echo ($member_rank > 1 && $edit_mode ? '<a href="' . $path . 'group_profile.php?id=' . $groupid . '&do=edit" class="new-button dark-button edit-icon" style="float:left"><b><span></span>Edit</b><i></i></a>' : ''); ?>
             <h2 class="page-owner">
               <?php echo HoloText($groupdata['name']); ?>&nbsp;
-              <?php echo ($groupdata['type'] == 2 ? '<img src="' . $web_gallery . '/images/status_closed_big.gif" alt="Closed Group" title="Closed Group" />' : ''); ?>
-              <?php echo ($groupdata['type'] == 1 ? '<img src="' . $web_gallery . '/images/status_exclusive_big.gif" alt="Moderated Group" title="Moderated Group" />' : ''); ?>
+              <?php echo ($groupdata['type'] == 2 ? '<img src="' . $web_gallery . 'images/status_closed_big.gif" alt="Closed Group" title="Closed Group" />' : ''); ?>
+              <?php echo ($groupdata['type'] == 1 ? '<img src="' . $web_gallery . 'images/status_exclusive_big.gif" alt="Moderated Group" title="Moderated Group" />' : ''); ?>
             </h2>
             <ul class="box-tabs">
               <li>
@@ -401,7 +401,7 @@ if($error != true) {
                               <td class="topiclist-rowtopic" valign="top">
                                 <div class="topiclist-row-content">
                                 <a class="topiclist-link icon icon-sticky" href="<?php echo $path; ?>viewthread.php?thread=<?php echo $row['id']; ?>"><?php echo HoloText($row['title']); ?></a>
-                                <?php echo ($row['type'] == 4 ? '&nbsp;<span class="topiclist-row-topicsticky"><img src="<?php echo $web_gallery; ?>images/groups/status_closed.gif" title="Closed Thread" alt="Closed Thread"></span>' : ''); ?>
+                                <?php echo ($row['type'] == 4 ? '&nbsp;<span class="topiclist-row-topicsticky"><img src="' . $web_gallery . 'images/groups/status_closed.gif" title="Closed Thread" alt="Closed Thread"></span>' : ''); ?>
                                 &nbsp;(page 
                                 <?php
                                   $thread_pages = ceil(($row['posts'] + 1) / 10);
@@ -445,7 +445,7 @@ if($error != true) {
                               <td class="topiclist-rowtopic" valign="top">
                                 <div class="topiclist-row-content">
                                 <a class="topiclist-link " href="<?php echo $path; ?>viewthread.php?thread=<?php echo $row['id']; ?>"><?php echo HoloText($row['title']); ?></a>
-                                <?php echo ($row['type'] == 2 ? '&nbsp;<span class="topiclist-row-topicsticky"><img src="<?php echo $web_gallery; ?>images/groups/status_closed.gif" title="Closed Thread" alt="Closed Thread"></span>' : ''); ?>
+                                <?php echo ($row['type'] == 2 ? '&nbsp;<span class="topiclist-row-topicsticky"><img src="' . $web_gallery . 'images/groups/status_closed.gif" title="Closed Thread" alt="Closed Thread"></span>' : ''); ?>
                                 &nbsp;(page 
                                 <?php
                                   $thread_pages = ceil(($row['posts'] + 1) / 10);
