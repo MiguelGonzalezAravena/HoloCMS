@@ -8,7 +8,7 @@
 || # HoloCMS is provided 'as is" and comes without
 || # warrenty of any kind. HoloCMS is free software!
 |+===================================================*/
-require_once(dirname(__FILE__) . '/../core.php')
+require_once(dirname(__FILE__) . '/../core.php');
 
 if($logged_in) {
   $username = $_SESSION['username'];
